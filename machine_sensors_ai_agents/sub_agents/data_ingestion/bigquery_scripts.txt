@@ -1,0 +1,56 @@
+CREATE OR REPLACE TABLE device_reading.realtime (
+  time_series_id STRING,
+  timestamp TIMESTAMP,
+  target_value FLOAT64,
+  temperature_unit STRING,
+  humidity FLOAT64,
+  battery_level FLOAT64,
+  location STRING,
+  status STRING,
+  received_at TIMESTAMP,
+  metadata JSON
+)
+PARTITION BY DATE(timestamp)
+CLUSTER BY time_series_id;
+
+time_series_id:string,
+timestamp:timestamp,
+target_value:float,
+temperature_unit:string,
+humidity:float,
+battery_level:float,
+location:string,
+status:string,
+received_at:timestamp,
+metadata:json
+
+
+
+INSERT INTO `yp-555555.device_readings.realtime`
+WITH devices AS (
+  SELECT 'sensor-' || FORMAT('%02d', x) AS time_series_id
+  FROM UNNEST(GENERATE_ARRAY(1, 10)) AS x
+),
+timestamps AS (
+  SELECT TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 10 * x MINUTE) AS timestamp
+  FROM UNNEST(GENERATE_ARRAY(0, 144)) AS x
+),
+combined AS (
+  SELECT
+    d.time_series_id,
+    t.timestamp,
+    ROUND(22 + RAND() * 16, 2) AS target_value,
+    'C' AS temperature_unit,
+    ROUND(30 + RAND() * 50, 2) AS humidity,
+    ROUND(60 + RAND() * 40, 2) AS battery_level,
+    'floor-1' AS location,
+    'OK' AS status,
+    t.timestamp AS received_at,
+    JSON '{"firmware_version": "v1.2.3", "sensor_type": "BME280"}' AS metadata
+  FROM devices d, timestamps t
+)
+SELECT * FROM combined;
+
+
+
+

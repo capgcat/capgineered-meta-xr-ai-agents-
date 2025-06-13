@@ -1,0 +1,57 @@
+#manual deployment of agent due to non pickleable value of MCP ToolSet
+export GOOGLE_GENAI_USE_VERTEXAI=1
+export GOOGLE_CLOUD_PROJECT=
+export GOOGLE_CLOUD_LOCATION=us-central1
+export GOOGLE_API_KEY=AIz
+export GOOGLE_CLOUD_STORAGE_BUCKET=
+export MCP_TOOLBOX_URL=
+export PROJECT_ID=
+#create artifacs repository
+gcloud artifacts repositories create machine-sensors-ai-agents \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="Repository for machine_sensors_ai_agents" \
+  --project=$PROJECT_ID
+
+
+# build and put in the artifacs
+gcloud builds submit --region=us-central1 --tag us-central1-docker.pkg.dev/$PROJECT_ID/machine-sensors-ai-agents/machine-sensors-ai-agents:latest
+
+
+
+
+# Define a name for your service account
+export SERVICE_ACCOUNT_NAME="machine-sensors-sa"
+export SERVICE_ACCOUNT_EMAIL="${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
+
+# Create the service account
+gcloud iam service-accounts create ${SERVICE_ACCOUNT_NAME} \
+  --project=${PROJECT_ID} \
+  --description="Service account for machine-sensors-ai-agents Cloud Run service" \
+  --display-name="${SERVICE_ACCOUNT_NAME}"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
+  --role="roles/bigquery.user"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
+  --role="roles/bigquery.dataViewer"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
+  --role="roles/bigquery.dataEditor"
+
+gcloud run deploy machine-sensors-ai-agents \
+  --image=us-central1-docker.pkg.dev/$PROJECT_ID/machine-sensors-ai-agents/machine-sensors-ai-agents:latest \
+  --region=us-central1 \
+  --allow-unauthenticated \
+  --set-env-vars=GOOGLE_API_KEY=$GOOGLE_API_KEY,MCP_TOOLBOX_URL=$MCP_TOOLBOX_URL \
+  --memory=1Gi
+  --service-account=${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
+
+
+  gcloud run services describe machine-sensors-ai-agents --region us-central1 --format 'value(status.url)'
+
+
+

@@ -1,0 +1,38 @@
+
+#setup mcp service account
+gcloud iam service-accounts create mcp-data-ingestion-agent \
+    --description="Service account for MCP data ingestion agent to access BigQuery" \
+    --display-name="MCP Data Ingestion Agent" \
+    --project="secpatch-460620"
+
+gcloud projects add-iam-policy-binding secpatch-460620 \
+    --member="serviceAccount:mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com" \
+    --role="roles/bigquery.dataEditor"
+
+gcloud projects add-iam-policy-binding secpatch-460620 \
+    --member="serviceAccount:mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com" \
+    --role="roles/bigquery.jobUser"
+
+gcloud iam service-accounts keys create ~/key.json \
+    --iam-account="mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com" \
+    --project="secpatch-460620"
+
+created key [4f34a8ca0782e621dc834ecf440fde0d476d6580] of type [json] as [/Users/catbalajadia/key.json] for [mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com]
+
+
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/catbalajadia/key.json"
+./toolbox --tools-file="tools.yaml"
+
+http://127.0.0.1:5000/api/toolset
+
+
+
+
+#Setting service account via console
+Alternatively, you can perform these steps through the Google Cloud Console:
+
+Navigate to "IAM & Admin" -> "Service Accounts".
+Click "+ CREATE SERVICE ACCOUNT".
+Fill in the details.
+Grant the necessary roles during or after creation.
+After creation, you can manage keys for the service account (select the service account, go to the "KEYS" tab, and "ADD KEY" -> "Create new key" -> "JSON").

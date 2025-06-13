@@ -1,0 +1,36 @@
+[project]
+name = "machine_sensors_ai_agents"
+version = "0.1.0"
+description = "This AI Agent finds anomalies in machines based on data provided by machine sensors, predicts which machines might need maintenance, and provides guidance to technicians on fixing them."
+authors = [
+    {name = "Sandeep Kudterkar", email = "sandeep.Kudterkar@capgemini.com"},
+    {name = "Catherine Balajadia", email = "catherine.balajadia@capgemini.com"},
+    {name = "Tushar Sabale", email = "tushar.sabale@capgemini.com"},
+]
+readme = "README.md"
+license = "Apache License 2.0"
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+requests = "^2.31.0"
+google-adk = "^1.0.0"
+pydantic = "^2.11.3"
+python-dotenv = "^1.1.0"
+google-cloud-aiplatform = {extras = ["adk", "agent_engines"], version = "^1.93.0"}
+absl-py = "^2.1.0"
+cloudpickle = "^3.0.0"
+deprecated = "^1.2.18"
+toolbox-core = "^0.2.0"
+
+[tool.poetry.scripts]
+deploy-remote = "deployment.remote:main"
+cleanup = "deployment.cleanup:cleanup_deployment"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+google-adk = { version = "^1.0.0", extras = ["eval"] }
+pytest = "^8.3.5"
+pytest-asyncio = "^0.26.0"

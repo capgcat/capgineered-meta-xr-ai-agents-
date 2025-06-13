@@ -1,0 +1,38 @@
+sources:
+  bigquery_connection:
+    kind: "bigquery"
+    project: "meta-xr-ai-agents"
+
+tools:
+  anomaly_insights_by_type:
+    kind: bigquery-sql
+    source: bigquery_connection
+    description: |
+      Retrieves all anomaly insights filtered by a specific observation type.
+      If a user asks about 'sensor data type' or 'sensor data', consider it the same as 'observation_type'.
+    parameters:
+      - name: observation_type
+        type: string
+        description: "The type of observation to filter anomalies by (e.g., 'temperature_reading', 'pressure_reading'). This parameter is required."
+    statement: |
+      SELECT
+        *
+      FROM
+        machine_telemetry.raw_observations
+      WHERE
+        observation_type = @observation_type;
+  anomaly_insights_all:
+    kind: bigquery-sql
+    source: bigquery_connection
+    description: |
+      Retrieves all anomaly insights without applying any observation type filter.
+      Useful for general queries like 'list all anomalies' or 'show complete anomaly data'.
+    statement: |
+      SELECT
+        *
+      FROM
+        machine_telemetry.raw_observations;
+toolsets:
+  anomaly_toolset:
+    - anomaly_insights_by_type
+    - anomaly_insights_all

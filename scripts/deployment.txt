@@ -1,11 +1,13 @@
 #manual deployment of agent due to non pickleable value of MCP ToolSet
 export GOOGLE_GENAI_USE_VERTEXAI=1
-export GOOGLE_CLOUD_PROJECT=
+export GOOGLE_CLOUD_PROJECT=hacker2025-team-63-dev
 export GOOGLE_CLOUD_LOCATION=us-central1
-export GOOGLE_API_KEY=AIz
-export GOOGLE_CLOUD_STORAGE_BUCKET=
-export MCP_TOOLBOX_URL=
-export PROJECT_ID=
+export GOOGLE_API_KEY=AIzaS
+export GOOGLE_CLOUD_STORAGE_BUCKET=staging.hacker2025-team-63-dev.appspot.com
+export PROJECT_ID=hacker2025-team-63-dev
+export MCP_TOOLBOX_URL_BQ=
+export MCP_TOOLBOX_URL_PG=
+export RAG_CORPUS
 #create artifacs repository
 gcloud artifacts repositories create machine-sensors-ai-agents \
   --repository-format=docker \

@@ -3,19 +3,19 @@
 gcloud iam service-accounts create mcp-data-ingestion-agent \
     --description="Service account for MCP data ingestion agent to access BigQuery" \
     --display-name="MCP Data Ingestion Agent" \
-    --project="secpatch-460620"
+    --project=$PROJECT_ID
 
-gcloud projects add-iam-policy-binding secpatch-460620 \
-    --member="serviceAccount:mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:id-mcp-data-ingestion-agent@hacker2025-team-63-dev.iam.gserviceaccount.com" \
     --role="roles/bigquery.dataEditor"
 
-gcloud projects add-iam-policy-binding secpatch-460620 \
-    --member="serviceAccount:mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:id-mcp-data-ingestion-agent@hacker2025-team-63-dev.iam.gserviceaccount.com" \
     --role="roles/bigquery.jobUser"
 
 gcloud iam service-accounts keys create ~/key.json \
-    --iam-account="mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com" \
-    --project="secpatch-460620"
+    --iam-account="id-mcp-data-ingestion-agent@hacker2025-team-63-dev.iam.gserviceaccount.com" \
+    --project="$PROJECT_ID
 
 created key [4f34a8ca0782e621dc834ecf440fde0d476d6580] of type [json] as [/Users/catbalajadia/key.json] for [mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com]
 

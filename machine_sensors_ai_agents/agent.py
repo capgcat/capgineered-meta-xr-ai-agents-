@@ -14,7 +14,7 @@ machine_sensor_ai_agent = SequentialAgent(
         'analysis, and control operations. It is designed to work with various types of sensors '
         'and can be integrated into larger IoT systems for real-time monitoring and automation.'
     ),
-    sub_agents=[data_ingestion_agent, guidance_agent, anomaly_agent, prediction_maintainence_agent],
+    sub_agents=[data_ingestion_agent, anomaly_agent, prediction_maintainence_agent],
 )
 
 root_agent = machine_sensor_ai_agent

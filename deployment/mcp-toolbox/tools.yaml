@@ -23,6 +23,47 @@ tools:
       FROM device d
       LEFT JOIN ticket t ON d.device_id = t.device_id AND t.status = 'Open'
       WHERE d.device_id = $1;
+  insert-device-info:
+    kind: postgres-sql
+    source: pg-source
+    description: |
+      Inserts a device record into the device table.
+      For optional fields not provided, the calling agent should pass NULL.
+    parameters:
+      - name: device_id
+        type: string
+        description: "Unique identifier for the device."
+      - name: device_type_id
+        type: integer
+        description: "Foreign key referencing device_type(id)."
+      - name: friendly_name
+        type: string
+        description: "Human-friendly name for the device. Optional."
+      - name: location
+        type: string
+        description: "Location of the device. Optional."
+      - name: status
+        type: string
+        description: "Status of the device. Optional."
+      - name: created_at
+        type: string
+        description: "Timestamp when the device was created. Optional."
+    statement: |
+      INSERT INTO device (
+        device_id,
+        device_type_id,
+        friendly_name,
+        location,
+        status,
+        created_at
+      ) VALUES (
+        @device_id,
+        @device_type_id,
+        @friendly_name,
+        @location,
+        @status,
+        @created_at
+      ); 
   insert_device_reading_tool:
     kind: bigquery-sql
     source: bigquery_connection
@@ -83,19 +124,36 @@ tools:
       kind: bigquery-sql
       source: bigquery_connection
       description: |
-        Retrieves all anomaly insights filtered by a specific observation type.
-        If a user asks about 'sensor data type' or 'sensor data', consider it the same as 'observation_type'.
+        Retrieves all anomaly insights filtered by a specific machine_id.
+        If a user asks about 'sensor data type' or 'sensor data', consider it the same as 'machine_id'.
       parameters:
-        - name: observation_type
+        - name: machine_id
           type: string
-          description: "The type of observation to filter anomalies by (e.g., 'temperature_reading', 'pressure_reading'). This parameter is required."
+          description: "The type of observation to filter anomalies by (e.g., 'FURNACE-SN001', 'FURNACE-SN002'). This parameter is required."
       statement: |
         SELECT
           *
         FROM
-          machine_telemetry.raw_observations
+          device_readings.realtime_sensor
         WHERE
-          observation_type = @observation_type;
+          machine_id = @machine_id;  
+  anomaly_insights_by_machine_id:
+      kind: bigquery-sql
+      source: bigquery_connection
+      description: |
+        Retrieves all anomaly insights filtered by a specific machine_id.
+        If a user asks about 'sensor data type' or 'sensor data', consider it the same as 'machine_id'.
+      parameters:
+        - name: machine_id
+          type: string
+          description: "The type of observation to filter anomalies by (e.g., 'FURNACE-SN001', 'FURNACE-SN002'). This parameter is required."
+      statement: |
+        SELECT
+          *
+        FROM
+          device_readings.realtime_sensor
+        WHERE
+          machine_id = @machine_id;          
   anomaly_insights_all:
     kind: bigquery-sql
     source: bigquery_connection
@@ -106,12 +164,15 @@ tools:
       SELECT
         *
       FROM
-        machine_telemetry.raw_observations;
+        device_readings.realtime_sensor;
 toolsets:
   iot_device_toolset: # Optional: grouping the new tool
     - insert_device_reading_tool
   anomaly_toolset:
+    - anomaly_insights_by_machine_id
+    - insert-device-info
+  guidance-toolset:
+    - fetch-device-info
+  predictions-toolset: 
     - anomaly_insights_by_type
     - anomaly_insights_all
-  guidance-toolset:
-    - fetch-device-info    

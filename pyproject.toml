@@ -21,7 +21,7 @@ absl-py = "^2.1.0"
 cloudpickle = "^3.0.0"
 deprecated = "^1.2.18"
 toolbox-core = "^0.2.0"
-llama-index = "^0.12.0"
+llama_index = "0.12"
 
 [tool.poetry.scripts]
 deploy-remote = "deployment.remote:main"

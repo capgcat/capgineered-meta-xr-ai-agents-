@@ -30,11 +30,14 @@ tools:
       Inserts a device reading record into the device_readings.realtime table.
       For optional fields not provided, the calling agent should pass NULL.
     parameters:
+      - name: machine_id
+        type: string
+        description: "Identifier for the machine."
       - name: time_series_id
         type: string
         description: "Identifier for the time series (e.g., device ID)."
       - name: timestamp # Renamed from 'timestamp' to avoid SQL keyword conflicts
-        type: string
+        type: timestamp
         description: "The timestamp of the reading."
       - name: target_value
         type: float
@@ -55,26 +58,26 @@ tools:
         type: string
         description: "Status of the device. Optional."
       - name: received_at
-        type: string
+        type: timestamp
         description: "Timestamp when the record was received by the system. Optional."
       - name: metadata # Assuming MCP 'json' type maps to BQ JSON
-        type: string # Changed from 'json' to 'string'
+        type: json
         description: "Additional metadata as a JSON formatted string. Optional."
-      - name: image_url # Assuming MCP 'image' type maps to BQ STRING
-        type: string # Changed from 'image' to 'string'
-        description: "URL of the image associated with the reading. Optional."
       - name: image_desc_generation_output # Assuming MCP 'text' type maps to BQ STRING
-        type: string # Changed from 'text' to 'string'
+        type: string
         description: "Generated description of the image. Optional."
+      - name: image_url # Assuming MCP 'image' type maps to BQ STRING
+        type: string
+        description: "URL of the image associated with the reading. Optional."
     statement: |
-      INSERT INTO `hacker2025-team-63-dev.device_readings.realtime` (
-        time_series_id, timestamp, target_value, temperature_unit,
+      INSERT INTO `hacker2025-team-63-dev.device_readings.realtime_sensor` (
+        machine_id, time_series_id, timestamp, target_value, temperature_unit,
         humidity, battery_level, location, status, received_at, metadata,
         image_desc_generation_output, image_url
       ) VALUES (
-        @time_series_id, @timestamp, @target_value, @temperature_unit, @humidity,
-        @battery_level, @location, @status, @received_at, PARSE_JSON(@metadata),
-        @image_desc_generation_output, @image_url
+        @machine_id, @time_series_id, @timestamp, @target_value, @temperature_unit,
+        @humidity, @battery_level, @location, @status, @received_at,
+        PARSE_JSON(@metadata), @image_desc_generation_output, @image_url
       );
   query_average_temperature:
     kind: bigquery-sql

@@ -17,5 +17,5 @@ data_ingestion_agent = SequentialAgent(
         'captured by sensors, and the data import agent to handle the import of sensor data. '
         'And finally, saving the output of these tasks to BigQuery for further analysis and processing.'
     ),
-    sub_agents=[decode_message_agent, image_desc_generation_agent, data_import_agent],
+    sub_agents=[image_desc_generation_agent, data_import_agent],
 )

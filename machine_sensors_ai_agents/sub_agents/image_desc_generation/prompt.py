@@ -14,46 +14,61 @@ When asked to describe an image, your process is as follows:
 5. Insert the generated description into the output JSON inside `original_input_payload under the attribute `image_desc_generation_output`.
 6. Return the original input payload under the key `original_input_payload` for reference.
 
+{
+  "data_source": "api-sensor-system",
+  "extracted_data": {
+    "machine_id": "machine-01",
+    "time_series_id": "sensor-04",
+    "target_value": 35.94,
+    "temperature_unit": "C",
+    "humidity": 56.01,
+    "battery_level": 79.7,
+    "location": "floor-1",
+    "status": "OK",
+    "metadata": {
+        "firmware_version": "v1.2.3",
+        "sensor_type": "BME280"
+    },
+    "image_url": "gs://device_readings_image/green_light.jpeg"
+  }
+}
 
 Example of your output format:
 ```json
 {
   "original_input_payload": {
-    "sensor_id": "sensor_1111",
-    "time_series_id": "ts_1111",
-    "timestamp": "2024-07-25T10:30:00Z",
-    "target_value": 30.2,
-    "temperature_unit": "Celsius",
-    "humidity": 55.5,
-    "battery_level": 92.0,
-    "location": "Factory Floor 21",
-    "status": "active",
-    "received_at": "2024-07-25T10:32:15Z",
-    "image_url": "gs://device_readings_images/green_light.jpeg",
+    "machine_id": "machine-01",
+    "time_series_id": "sensor-04",
+    "timestamp": "2025-06-11 22:22:54.703441 UTC",
+    "target_value": "35.94",
+    "temperature_unit": "C",
+    "humidity": "56.01",
+    "battery_level": "79.7",
+    "location": "floor-1",
+    "status": "OK",
+    "received_at": "2025-06-11 22:22:54.703441 UTC",
+    "metadata": "{\"firmware_version\":\"v1.2.3\",\"sensor_type\":\"BME280\"}",
+    "image_url": "gs://device_readings_image/green_light.jpeg"
     "image_desc_generation_output": "The image shows a close-up of a circular indicator light, glowing intensely green, set into a plain, light-colored surface. The light originates from a central point and reflects off dark, segmented internal components, all framed by a translucent outer ring."
-    "metadata": {
-        "additional_info": "Normal operating conditions"
-    }
   }
 ```
 Or, in case of an issue:
 ```json
 {
   "original_input_payload": {
-    "sensor_id": "sensor_1111",
-    "time_series_id": "ts_1111",
-    "timestamp": "2024-07-25T10:30:00Z",
-    "target_value": 30.2,
-    "temperature_unit": "Celsius",
-    "humidity": 55.5,
-    "battery_level": 92.0,
-    "location": "Factory Floor 21",
-    "status": "active",
-    "received_at": "2024-07-25T10:32:15Z",
+    "machine_id": "machine-01",
+    "time_series_id": "sensor-04",
+    "timestamp": "2025-06-11 22:22:54.703441 UTC",
+    "target_value": "35.94",
+    "temperature_unit": "C",
+    "humidity": "56.01",
+    "battery_level": "79.7",
+    "location": "floor-1",
+    "status": "OK",
+    "received_at": "2025-06-11 22:22:54.703441 UTC",
+    "metadata": "{\"firmware_version\":\"v1.2.3\",\"sensor_type\":\"BME280\"}",
+    "image_url": "gs://device_readings_image/green_light.jpeg"
     "image_desc_generation_output": "No image processed. The provided `image_url` was either missing or not a valid GCS URI.",
-    "metadata": {
-        "additional_info": "Normal operating conditions"
-    }
 }
 ```
 

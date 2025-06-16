@@ -26,7 +26,7 @@ files = [
 
 [[package]]
 name = "aiohttp"
-version = "3.12.11"
+version = "3.12.13"
 description = "Async http client/server framework (asyncio)"
 optional = false
 python-versions = ">=3.9"

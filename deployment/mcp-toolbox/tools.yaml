@@ -30,15 +30,12 @@ tools:
       Inserts a device reading record into the device_readings.realtime table.
       For optional fields not provided, the calling agent should pass NULL.
     parameters:
-      - name: machine_id
-        type: string
-        description: "Identifier for the machine."
       - name: time_series_id
         type: string
         description: "Identifier for the time series (e.g., device ID)."
-      - name: timestamp
+      - name: timestamp # Renamed from 'timestamp' to avoid SQL keyword conflicts
         type: string
-        description: "The timestamp of the reading (e.g., 'YYYY-MM-DDTHH:MM:SSZ')."
+        description: "The timestamp of the reading."
       - name: target_value
         type: float
         description: "The target value measured by the device."
@@ -70,15 +67,36 @@ tools:
         type: string # Changed from 'text' to 'string'
         description: "Generated description of the image. Optional."
     statement: |
-      INSERT INTO `hacker2025-team-63-dev.device_readings.realtime_sensor` (
-        machine_id, time_series_id, timestamp, target_value, temperature_unit,
+      INSERT INTO `secpatch-460620.device_readings.realtime` (
+        time_series_id, timestamp, target_value, temperature_unit,
         humidity, battery_level, location, status, received_at, metadata,
         image_desc_generation_output, image_url
       ) VALUES (
-        @machine_id, @time_series_id, @timestamp, @target_value, @temperature_unit,
-        @humidity, @battery_level, @location, @status, @received_at,
-        PARSE_JSON(@metadata), @image_desc_generation_output, @image_url
+        @time_series_id, @timestamp, @target_value, @temperature_unit, @humidity,
+        @battery_level, @location, @status, @received_at, PARSE_JSON(@metadata),
+        @image_desc_generation_output, @image_url
       );
+  query_average_temperature:
+    kind: bigquery-sql
+    source: bigquery_connection
+    description: |
+      Queries the average temperature from the device_readings.realtime_sensor table.
+      This tool is useful for analyzing temperature trends over time.
+    parameters:
+      - name: start_date
+        type: string
+        description: "Start date for the query in 'YYYY-MM-DD' format."
+      - name: end_date
+        type: string
+        description: "End date for the query in 'YYYY-MM-DD' format."
+    statement: |
+      SELECT
+        AVG(target_value) AS average_temperature
+      FROM
+        `hacker2025-team-63-dev.device_readings.realtime_sensor`
+      WHERE
+        temperature_unit = 'Celsius' AND
+        timestamp BETWEEN @start_date AND @end_date;
   anomaly_insights_by_type:
       kind: bigquery-sql
       source: bigquery_connection
@@ -111,6 +129,7 @@ toolsets:
   iot_device_toolset: # Optional: grouping the new tool
     - insert_device_reading_tool
   anomaly_toolset:
+    - query_average_temperature
     - anomaly_insights_by_type
     - anomaly_insights_all
   guidance-toolset:

@@ -11,7 +11,7 @@ When asked to describe an image, your process is as follows:
    If the tool's direct output to you (e.g., `None`) doesn't include specific error details, you can state that.
    You may also suggest to the user that more specific technical details regarding the GCS access attempt (such as 'file not found', 'invalid URL', or 'permission issues') might be available in the system's operational logs.
 4. If the `get_image_from_gcs` tool successfully downloads the image and provides a local file path, then use the `describe_image_with_gemini` tool, providing it with the local path to get the image description. If image download failed or no `image_url` was provided, the description should reflect this (e.g., "No image processed" or "GCS image retrieval failed.").
-5. Insert the generated description into the output JSON under the key `image_desc_generation_output`.
+5. Insert the generated description into the output JSON inside `original_input_payload under the attribute `image_desc_generation_output`.
 6. Return the original input payload under the key `original_input_payload` for reference.
 
 

@@ -67,7 +67,7 @@ tools:
         type: string # Changed from 'text' to 'string'
         description: "Generated description of the image. Optional."
     statement: |
-      INSERT INTO `secpatch-460620.device_readings.realtime` (
+      INSERT INTO `hacker2025-team-63-dev.device_readings.realtime` (
         time_series_id, timestamp, target_value, temperature_unit,
         humidity, battery_level, location, status, received_at, metadata,
         image_desc_generation_output, image_url

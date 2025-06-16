@@ -13,9 +13,22 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --member="serviceAccount:id-mcp-data-ingestion-agent@hacker2025-team-63-dev.iam.gserviceaccount.com" \
     --role="roles/bigquery.jobUser"
 
-gcloud iam service-accounts keys create ~/key.json \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:id-mcp-data-ingestion-agent@hacker2025-team-63-dev.iam.gserviceaccount.com" \
+    --role="roles/secretmanager.secretAccessor"
+
+gcloud secrets add-iam-policy-binding tools \
+    --member="serviceAccount:toolbox-identity@hacker2025-team-63-dev.iam.gserviceaccount.com" \
+    --role="roles/secretmanager.secretAccessor" \
+    --project=$PROJECT_ID
+
+gcloud iam service-accounts keys create ~/hack/key.json \
     --iam-account="id-mcp-data-ingestion-agent@hacker2025-team-63-dev.iam.gserviceaccount.com" \
     --project="$PROJECT_ID
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member serviceAccount:toolbox-identity@$PROJECT_ID.iam.gserviceaccount.com \
+    --role roles/secretmanager.secretAccessor
 
 created key [4f34a8ca0782e621dc834ecf440fde0d476d6580] of type [json] as [/Users/catbalajadia/key.json] for [mcp-data-ingestion-agent@secpatch-460620.iam.gserviceaccount.com]
 

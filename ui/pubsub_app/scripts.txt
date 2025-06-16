@@ -41,31 +41,32 @@ gcloud pubsub subscriptions create iot-realtime-subscription \
   },
   "subscription": "..." // The subscription name
 }
+
 {
   "message": {
-    "data": "ewogICJkYXRhX3NvdXJjZSI6ICJhcGktc2Vuc29yLXN5c3RlbSIsCiAgImV4dHJhY3RlZF9kYXRhIjogewogICAgInNlbnNvcl9pZCI6ICJzZW5zb3JfNzgwIiwKICAgICJ0aW1lX3Nlcmllc19pZCI6ICJ0c18xMjMiLAogICAgInRpbWVzdGFampwIjogIjIwMjQtMDctMjVUMTA6MzA6MDAaIiwKICAgICJ0YXJnZXRfdmFsdWUiOiAzMC4yLAogICAgInRlbXBlcmF0dXJlX3VuaXQiOiAiQ2Vsc2l1cyIsCiAgICAiaHVtaWRpdHkiOiA1NS41LAogICAgImJhdHRlcnlfbGV2ZWwiOiA5Mi4wLAogICAgImxvY2F0aW9uIjogIkZhY3RvcnkgRmxvb3IgMjEiLAogICAgInN0YXR1cyI6ICJhY3RpdmUiLAogICAgInJlY2VpdmVkX2F0IjogIjIwMjQtMDctMjVUMTA6MzI6MTVaIiwKICAgICJtZXRhZGF0YSI6IHsKICAgICAgImFkZGl0aW9uYWxfaW5mbyI6ICJOb3JtYWwgb3BlcmF0aW5nIGNvbmRpdGlvbnMiCiAgICB9ICAgIAogIH0KfQ==",
+    "data": "ewogICJkYXRhX3NvdXJjZSI6ICJhcGktc2Vuc29yLXN5c3RlbSIsCiAgImV4dHJhY3RlZF9kYXRhIjogewogICAgIm1hY2hpbmVfaWQiOiAibWFjaGluZS0wMSIsCiAgICAidGltZV9zZXJpZXNfaWQiOiAic2Vuc29yLTA0IiwKICAgICJ0aW1lc3RhbXAiOiAiMjAyNS0wNi0xMSAyMjoyMjo1NC43MDM0NDEgVVRDIiwKICAgICJyZWNlaXZlZF9hdCI6ICIyMDI1LTA2LTExIDIyOjIyOjU0LjcwMzQ0MSBVVEMiLAogICAgInRhcmdldF92YWx1ZSI6IDM1Ljk0LAogICAgInRlbXBlcmF0dXJlX3VuaXQiOiAiQyIsCiAgICAiaHVtaWRpdHkiOiA1Ni4wMSwKICAgICJiYXR0ZXJ5X2xldmVsIjogNzkuNywKICAgICJsb2NhdGlvbiI6ICJmbG9vci0xIiwKICAgICJzdGF0dXMiOiAiT0siLAogICAgIm1ldGFkYXRhIjogewogICAgICAgICJmaXJtd2FyZV92ZXJzaW9uIjogInYxLjIuMyIsCiAgICAgICAgInNlbnNvcl90eXBlIjogIkJNRTI4MCIKICAgIH0sCiAgICAiaW1hZ2VfdXJsIjogImdzOi8vZGV2aWNlX3JlYWRpbmdzX2ltYWdlL2dyZWVuX2xpZ2h0LmpwZWciCiAgfQp9",
     "messageId": "test-message-123",
     "publishTime": "2024-07-25T10:35:00Z"
   },
   "subscription": "projects/your-project-id/subscriptions/your-subscription-name"
 }
-
 {
   "data_source": "api-sensor-system",
   "extracted_data": {
-    "sensor_id": "sensor_1111",
-    "time_series_id": "ts_1111",
-    "timestamp": "2024-07-25T10:30:00Z",
-    "target_value": 30.2,
-    "temperature_unit": "Celsius",
-    "humidity": 55.5,
-    "battery_level": 92.0,
-    "location": "Factory Floor 21",
-    "status": "active",
-    "received_at": "2024-07-25T10:32:15Z",
-    "image_url": "gs://device_readings_images/green_light.jpeg",
+    "machine_id": "machine-01",
+    "time_series_id": "sensor-04",
+    "timestamp": "2025-06-11 22:22:54.703441 UTC",
+    "received_at": "2025-06-11 22:22:54.703441 UTC",
+    "target_value": 35.94,
+    "temperature_unit": "C",
+    "humidity": 56.01,
+    "battery_level": 79.7,
+    "location": "floor-1",
+    "status": "OK",
     "metadata": {
-        "additional_info": "Normal operating conditions"
-        }   
-    }
+        "firmware_version": "v1.2.3",
+        "sensor_type": "BME280"
+    },
+    "image_url": "gs://device_readings_image/green_light.jpeg"
+  }
 }

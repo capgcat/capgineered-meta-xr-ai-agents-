@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ----- Example of Google Cloud Tools (MCP Toolbox for Databases) -----
-TOOLBOX_URL = os.getenv("MCP_TOOLBOX_URL_BQ", "http://127.0.0.1:5000")
+TOOLBOX_URL = os.getenv("MCP_TOOLBOX_URL", "http://127.0.0.1:5000")
 
 toolbox = ToolboxSyncClient(TOOLBOX_URL)
 toolbox_tools = toolbox.load_toolset("iot_device_toolset")

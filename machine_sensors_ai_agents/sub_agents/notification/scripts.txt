@@ -24,24 +24,6 @@ CREATE TABLE device_type (
 );
 
 
-CREATE TABLE ticket (
-    id SERIAL PRIMARY KEY,
-    device_id VARCHAR(255) NOT NULL,
-    -- device_type is now derived from the device table
-    status VARCHAR(50) NOT NULL DEFAULT 'Open', -- Added default status
-    description TEXT,
-    assigned_to_technician_id INT,
-    priority VARCHAR(20) DEFAULT 'Medium', -- e.g., Low, Medium, High, Critical
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    CONSTRAINT fk_ticket_device
-        FOREIGN KEY(device_id)
-        REFERENCES device(device_id),
-    CONSTRAINT fk_technician
-        FOREIGN KEY(assigned_to_technician_id)
-        REFERENCES service_technician(technician_id)
-);
-
 CREATE TABLE device (
     device_id VARCHAR(255) PRIMARY KEY,
     device_type_id INT NOT NULL,
@@ -66,6 +48,24 @@ CREATE TABLE service_technician (
     CONSTRAINT fk_technician_specialization
         FOREIGN KEY(specialization_device_type_id)
         REFERENCES device_type(id)
+);
+
+CREATE TABLE ticket (
+    id SERIAL PRIMARY KEY,
+    device_id VARCHAR(255) NOT NULL,
+    -- device_type is now derived from the device table
+    status VARCHAR(50) NOT NULL DEFAULT 'Open', -- Added default status
+    description TEXT,
+    assigned_to_technician_id INT,
+    priority VARCHAR(20) DEFAULT 'Medium', -- e.g., Low, Medium, High, Critical
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CONSTRAINT fk_ticket_device
+        FOREIGN KEY(device_id)
+        REFERENCES device(device_id),
+    CONSTRAINT fk_technician
+        FOREIGN KEY(assigned_to_technician_id)
+        REFERENCES service_technician(technician_id)
 );
 
 -- Sample data for device_type

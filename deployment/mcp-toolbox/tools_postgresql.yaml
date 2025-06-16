@@ -15,6 +15,19 @@ sources:
   #   user: postgres
   #   password: admin
 tools:
+  fetch-device-info:
+    kind: postgres-sql
+    source: pg-source
+    description: Fetch device details and any open tickets by device ID.
+    parameters:
+      - name: device_id
+        type: string
+        description: The unique identifier of the device.
+    statement: |
+      SELECT d.device_id, d.friendly_name, d.location, d.status, t.id AS ticket_id, t.status AS ticket_status, t.description AS ticket_description
+      FROM device d
+      LEFT JOIN ticket t ON d.device_id = t.device_id AND t.status = 'Open'
+      WHERE d.device_id = $1;
   search-tickets:
     kind: postgres-sql
     source: postgresql
@@ -136,3 +149,5 @@ toolsets:
     - update-ticket-priority
     - update-ticket-status
     - create-new-ticket
+  guidance-toolset:
+    - fetch-device-info    

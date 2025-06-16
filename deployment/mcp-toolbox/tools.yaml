@@ -2,27 +2,7 @@ sources:
   bigquery_connection:
     kind: "bigquery"
     project: "hacker2025-team-63-dev"
-  pg-source:
-    kind: postgres
-    host: 127.0.0.1
-    port: 5432
-    database: predictions-data
-    user: postgres
-    password: root
 tools:
-  fetch-device-info:
-    kind: postgres-sql
-    source: pg-source
-    description: Fetch device details and any open tickets by device ID.
-    parameters:
-      - name: device_id
-        type: string
-        description: The unique identifier of the device.
-    statement: |
-      SELECT d.device_id, d.friendly_name, d.location, d.status, t.id AS ticket_id, t.status AS ticket_status, t.description AS ticket_description
-      FROM device d
-      LEFT JOIN ticket t ON d.device_id = t.device_id AND t.status = 'Open'
-      WHERE d.device_id = $1;
   insert_device_reading_tool:
     kind: bigquery-sql
     source: bigquery_connection
@@ -36,8 +16,8 @@ tools:
       - name: time_series_id
         type: string
         description: "Identifier for the time series (e.g., device ID)."
-      - name: timestamp # Renamed from 'timestamp' to avoid SQL keyword conflicts
-        type: timestamp
+      - name: timestamp
+        type: string # Changed from timestamp to string
         description: "The timestamp of the reading."
       - name: target_value
         type: float
@@ -57,11 +37,11 @@ tools:
       - name: status
         type: string
         description: "Status of the device. Optional."
-      - name: received_at
-        type: timestamp
+      - name: received_at 
+        type: string # Changed from timestamp to string
         description: "Timestamp when the record was received by the system. Optional."
-      - name: metadata # Assuming MCP 'json' type maps to BQ JSON
-        type: json
+      - name: metadata
+        type: string # Changed from json to string
         description: "Additional metadata as a JSON formatted string. Optional."
       - name: image_desc_generation_output # Assuming MCP 'text' type maps to BQ STRING
         type: string
@@ -135,5 +115,3 @@ toolsets:
     - query_average_temperature
     - anomaly_insights_by_type
     - anomaly_insights_all
-  guidance-toolset:
-    - fetch-device-info    

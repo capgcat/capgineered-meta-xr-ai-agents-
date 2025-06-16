@@ -5,7 +5,7 @@ export GOOGLE_CLOUD_LOCATION=us-central1
 export GOOGLE_API_KEY=AIzaSyCqf7yqy5tgeCy4R4CGqc-FgO6WPgvDO-Y
 export GOOGLE_CLOUD_STORAGE_BUCKET=staging.hacker2025-team-63-dev.appspot.com
 export PROJECT_ID=hacker2025-team-63-dev
-export MCP_TOOLBOX_URL_BQ=http://127.0.0.1:5000
+export MCP_TOOLBOX_URL=http://127.0.0.1:5000
 export MCP_TOOLBOX_PG=http://127.0.0.1:6000
 export RAG_CORPUS=RAG_CORPUS=projects/hacker2025-team-63-dev/locations/us-central1/ragCorpora/6917529027641081856
 export DB_USER=postgres
@@ -52,7 +52,7 @@ gcloud run deploy machine-sensors-ai-agents \
   --image=us-central1-docker.pkg.dev/$PROJECT_ID/machine-sensors-ai-agents/machine-sensors-ai-agents:latest \
   --region=us-central1 \
   --allow-unauthenticated \
-  --set-env-vars=GOOGLE_API_KEY=$GOOGLE_API_KEY,MCP_TOOLBOX_URL_BQ=$MCP_TOOLBOX_URL_BQ \
+  --set-env-vars=GOOGLE_API_KEY=$GOOGLE_API_KEY,MCP_TOOLBOX_URL=$MCP_TOOLBOX_URL \
   --memory=1Gi
   --service-account=${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
 

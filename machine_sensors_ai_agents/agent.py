@@ -30,7 +30,7 @@ machine_sensor_ai_agent = LlmAgent(
         "If asked about guidance, you can refer to the `guidance_agent` for step-by-step assistance. "
         "If asked about furnace operations, manuals and instructions, you can refer to the `rag_agent` for retrieval-augmented generation tasks."
     ),
-    sub_agents=[monitoring_agent, guidance_agent, rag_agent],
+    sub_agents=[monitoring_agent, guidance_agent],
 )
 
 root_agent = machine_sensor_ai_agent

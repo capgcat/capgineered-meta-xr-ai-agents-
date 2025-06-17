@@ -68,6 +68,21 @@ CREATE TABLE ticket (
         REFERENCES service_technician(technician_id)
 );
 
+CREATE TABLE machine_anomalies (
+  event_id VARCHAR(255) PRIMARY KEY,
+  device_id VARCHAR(255) NOT NULL,
+  machine_id VARCHAR(255) ,
+  location VARCHAR(255) ,
+  time_window_start TIMESTAMP,
+  avg_temp DOUBLE PRECISION,
+  humidity DOUBLE PRECISION,
+  battery_level DOUBLE PRECISION,
+  description VARCHAR(100),
+  anomaly_status VARCHAR(255) ,
+  inserted_at TIMESTAMP
+);
+
+
 -- Sample data for device_type
 INSERT INTO device_type (name, description) VALUES
 ('Furnace', 'Residential and commercial heating furnaces'),

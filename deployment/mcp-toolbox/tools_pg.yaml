@@ -1,0 +1,69 @@
+sources:
+  postgresql: # GCP -  CLOUD SQL
+    kind: cloud-sql-postgres
+    project: ${PROJECT_ID}
+    region: us-central1
+    instance: wavelengthwonders
+    database: predictions-data
+    user: ${DB_USER}
+    password: ${DB_PASS}
+tools:
+  fetch-device-info:
+    kind: postgres-sql
+    source: pg-source
+    description: Fetch device details and any open tickets by device ID.
+    parameters:
+      - name: device_id
+        type: string
+        description: The unique identifier of the device.
+    statement: |
+      SELECT d.device_id, d.friendly_name, d.location, d.status, t.id AS ticket_id, t.status AS ticket_status, t.description AS ticket_description
+      FROM device d
+      LEFT JOIN ticket t ON d.device_id = t.device_id AND t.status = 'Open'
+      WHERE d.device_id = $1;
+  insert-device-info:
+    kind: postgres-sql
+    source: pg-source
+    description: |
+      Inserts a device record into the device table.
+      For optional fields not provided, the calling agent should pass NULL.
+    parameters:
+      - name: device_id
+        type: string
+        description: "Unique identifier for the device."
+      - name: device_type_id
+        type: integer
+        description: "Foreign key referencing device_type(id)."
+      - name: friendly_name
+        type: string
+        description: "Human-friendly name for the device. Optional."
+      - name: location
+        type: string
+        description: "Location of the device. Optional."
+      - name: status
+        type: string
+        description: "Status of the device. Optional."
+      - name: created_at
+        type: string
+        description: "Timestamp when the device was created. Optional."
+    statement: |
+      INSERT INTO device (
+        device_id,
+        device_type_id,
+        friendly_name,
+        location,
+        status,
+        created_at
+      ) VALUES (
+        @device_id,
+        @device_type_id,
+        @friendly_name,
+        @location,
+        @status,
+        @created_at
+      ); 
+toolsets:
+  anomaly_toolset:
+    - insert-device-info
+  guidance-toolset:
+    - fetch-device-info

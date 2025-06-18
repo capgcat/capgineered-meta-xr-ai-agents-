@@ -6,9 +6,9 @@ sources:
     kind: postgres
     host: 127.0.0.1
     port: 5432
-    database: wavelengthwonders
-    user: admin
-    password: admin
+    database: predictions-data
+    user: postgres
+    password: root  
 tools:
   fetch-device-info:
     kind: postgres-sql
@@ -197,10 +197,10 @@ tools:
         machine_id, location, time_window_start,
         avg_temp, avg_humidity, avg_battery_level, description, anomaly_status, inserted_at
       ) VALUES (
-        @machine_id, @location, CAST(@time_window_start AS TIMESTAMP),
-        @avg_temp, @avg_humidity, @avg_battery_level, @description, @anomaly_status, CURRENT_TIMESTAMP
+        $1, $2, $3,
+        $4, $5, $6, $7, $8, CURRENT_TIMESTAMP
       );
-  fetch-machine-anomaly:
+  fetch-machine-anomaly:    
     kind: postgres-sql
     source: pg-source
     description: |
@@ -211,8 +211,7 @@ tools:
         description: "Identifier for the machine to fetch anomalies for. If not provided, all anomalies might be returned (depending on implementation details not covered here, typically you'd want a filter)."
     statement: |
       SELECT * FROM machine_anomalies
-      WHERE machine_id = @machine_id
-      ORDER BY inserted_at DESC;
+      WHERE machine_id = $1;
 toolsets:
   iot_device_toolset: # Optional: grouping the new tool
     - insert_device_reading_tool
@@ -222,4 +221,6 @@ toolsets:
   guidance-toolset:
     - fetch-device-info
   predictions-toolset: 
+    - fetch-machine-anomaly
+  notifications-toolset: 
     - fetch-machine-anomaly

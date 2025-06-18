@@ -157,13 +157,13 @@ gcloud services enable aiplatform.googleapis.com
 - **Run Locally:**
 adk web or adk run machine_sensors_ai_agents
 - **Remote Deployment:**
-- poetry run deploy-remote --create
-- poetry run deploy-remote --create_session --resource_id=your-resource-id
+1 poetry run deploy-remote --create
+2 poetry run deploy-remote --create_session --resource_id=your-resource-id
                or
     POST https://LOCATION-aiplatform.googleapis.com/v1beta1/projects/PROJECT_ID/locations/LOCATION/reasoningEngines/AGENT_ENGINE_ID/sessions
     Authorization Bearer : Create it by running "gcloud auth print-access-token"
-- poetry run deploy-remote --send --resource_id=your-resource-id --session_id=your-session-id --message="The cat was a funny cat. The cat liked to sleep, and the cat liked to eat. Every morning, the cat would jump on the bed, the cat would meow, and the cat would purr. Everyone in the house knew the cat, talked about the cat, and cared for the cat. It was always the cat, the cat, the cat — nothing but the cat all day long."
-- poetry run deploy-remote --delete --resource_id=your-resource-id
+3 poetry run deploy-remote --send --resource_id=your-resource-id --session_id=your-session-id --message="The cat was a funny cat. The cat liked to sleep, and the cat liked to eat. Every morning, the cat would jump on the bed, the cat would meow, and the cat would purr. Everyone in the house knew the cat, talked about the cat, and cared for the cat. It was always the cat, the cat, the cat — nothing but the cat all day long."
+4 poetry run deploy-remote --delete --resource_id=your-resource-id
 
 # Safety and Security
 - Role-based access control for dashboards and agent actions

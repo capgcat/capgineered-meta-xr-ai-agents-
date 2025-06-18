@@ -5,25 +5,6 @@ CREATE TABLE device_type (
     description TEXT
 );
  
- 
-CREATE TABLE ticket (
-    id SERIAL PRIMARY KEY,
-    device_id VARCHAR(255) NOT NULL,
-    -- device_type is now derived from the device table
-    status VARCHAR(50) NOT NULL DEFAULT 'Open', -- Added default status
-    description TEXT,
-    assigned_to_technician_id INT,
-    priority VARCHAR(20) DEFAULT 'Medium', -- e.g., Low, Medium, High, Critical
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    CONSTRAINT fk_ticket_device
-        FOREIGN KEY(device_id)
-        REFERENCES device(device_id),
-    CONSTRAINT fk_technician
-        FOREIGN KEY(assigned_to_technician_id)
-        REFERENCES service_technician(technician_id)
-);
- 
 CREATE TABLE device (
     device_id VARCHAR(255) PRIMARY KEY,
     device_type_id INT NOT NULL,
@@ -50,6 +31,53 @@ CREATE TABLE service_technician (
         REFERENCES device_type(id)
 );
  
+ 
+CREATE TABLE machine_anomalies (
+  event_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  machine_id VARCHAR(255) ,
+  location VARCHAR(255) ,
+  time_window_start TIMESTAMP,
+  avg_temp DOUBLE PRECISION,
+  avg_humidity DOUBLE PRECISION,
+  avg_battery_level DOUBLE PRECISION,
+  description VARCHAR(100),
+  anomaly_status VARCHAR(255) ,
+  inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ticket (
+    id SERIAL PRIMARY KEY,
+    device_id VARCHAR(255) NOT NULL,
+    -- device_type is now derived from the device table
+    status VARCHAR(50) NOT NULL DEFAULT 'Open', -- Added default status
+    description TEXT,
+    assigned_to_technician_id INT,
+    priority VARCHAR(20) DEFAULT 'Medium', -- e.g., Low, Medium, High, Critical
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    CONSTRAINT fk_ticket_device
+        FOREIGN KEY(device_id)
+        REFERENCES device(device_id),
+    CONSTRAINT fk_technician
+        FOREIGN KEY(assigned_to_technician_id)
+        REFERENCES service_technician(technician_id)
+);
+ 
+ 
+CREATE TABLE machine_anomalies (
+  event_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  machine_id VARCHAR(255) ,
+  location VARCHAR(255) ,
+  time_window_start TIMESTAMP,
+  avg_temp DOUBLE PRECISION,
+  avg_humidity DOUBLE PRECISION,
+  avg_battery_level DOUBLE PRECISION,
+  description VARCHAR(100),
+  anomaly_status VARCHAR(255) ,
+  inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 -- Sample data for device_type
 INSERT INTO device_type (name, description) VALUES
 ('Furnace', 'Residential and commercial heating furnaces'),
@@ -86,3 +114,22 @@ VALUES ('HVAC-SN001', 'Open', 'HVAC unit making loud noise', 2, 'Critical');
 -- Ticket 4: Open, unassigned, for Ground Floor HVAC
 INSERT INTO ticket (device_id, status, description, priority)
 VALUES ('HVAC-SN002', 'Open', 'Routine maintenance required', 'Low');
+
+
+INSERT INTO machine_anomalies (
+  machine_id, location, time_window_start, avg_temp, avg_humidity, avg_battery_level, description, anomaly_status
+) VALUES
+-- 1. Furnace overheating, Main Building Furnace A
+('FURNACE-SN001', 'Basement - Sector 1', '2024-06-10 08:00:00', 92.5, 35.2, 85.0, 'Temperature spike detected', 'Open'),
+
+-- 2. Battery low, Annex Furnace Alpha
+('FURNACE-SN002', 'Annex - Utility Closet', '2024-06-10 09:00:00', 68.0, 40.0, 15.5, 'Battery level critically low', 'Open'),
+
+-- 3. Humidity anomaly, Rooftop HVAC Unit 1
+('HVAC-SN001', 'Rooftop - East Wing', '2024-06-10 10:00:00', 74.0, 89.0, 90.0, 'Unusual humidity reading', 'Investigating'),
+
+-- 4. Sensor offline, Ground Floor HVAC
+('HVAC-SN002', 'Ground Floor - West Wing', '2024-06-10 11:00:00', NULL, NULL, NULL, 'No sensor data received', 'Open'),
+
+-- 5. Recovered anomaly, Main Building Furnace A
+('FURNACE-SN001', 'Basement - Sector 1', '2024-06-09 22:00:00', 70.0, 36.0, 82.0, 'Previous anomaly resolved', 'Closed');

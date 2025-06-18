@@ -4,6 +4,7 @@ from .sub_agents.guidance.agent import guidance_agent
 from .sub_agents.anomaly_detection.agent import anomaly_agent
 from .sub_agents.prediction.agent import prediction_maintainence_agent
 from .sub_agents.data_ingestion.agent import data_ingestion_agent
+from .sub_agents.notification.agent import notification_agent
 from .sub_agents.rag_agent.agent import rag_agent
 
 
@@ -15,7 +16,7 @@ monitoring_agent = SequentialAgent(
         'Your primary role is to monitor the health and performance of machine sensors, '
         'detect anomalies, and predict maintenance needs. '
     ),
-    sub_agents=[data_ingestion_agent, anomaly_agent, prediction_maintainence_agent],
+    sub_agents=[data_ingestion_agent, anomaly_agent, prediction_maintainence_agent,notification_agent],
 )
 
 machine_sensor_ai_agent = LlmAgent(

@@ -67,7 +67,8 @@ GuideXR delivers immersive, step-by-step XR/VR guidance to technicians, accelera
 # ADK Web & Mixed Reality Integration
 - **Web Dashboard** for SOC and management
 - **Mixed Reality (XR/VR)**  for immersive technician guidance
-![Alt text](https://github.com/user-attachments/assets/1da7785a-3d78-4deb-ab36-efff25367d1d)
+![Alt text](https://github.com/capgcat/capgineered-meta-xr-ai-agents-/issues/9#issue-3158463012)
+![Alt text](https://github.com/capgcat/capgineered-meta-xr-ai-agents-/issues/9#issue-3158463012)
 
 # Under the Hood: Our Technology Stack
 - **Python 3.10+** (Poetry for dependency management)

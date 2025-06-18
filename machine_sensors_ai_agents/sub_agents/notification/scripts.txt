@@ -70,13 +70,12 @@ CREATE TABLE ticket (
 
 CREATE TABLE machine_anomalies (
   event_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  device_id VARCHAR(255) NOT NULL,
   machine_id VARCHAR(255) ,
   location VARCHAR(255) ,
   time_window_start TIMESTAMP,
   avg_temp DOUBLE PRECISION,
-  humidity DOUBLE PRECISION,
-  battery_level DOUBLE PRECISION,
+  avg_humidity DOUBLE PRECISION,
+  avg_battery_level DOUBLE PRECISION,
   description VARCHAR(100),
   anomaly_status VARCHAR(255) ,
   inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

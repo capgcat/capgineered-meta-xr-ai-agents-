@@ -18,4 +18,5 @@ data_ingestion_agent = SequentialAgent(
         'And finally, saving the output of these tasks to BigQuery for further analysis and processing.'
     ),
     sub_agents=[image_desc_generation_agent, data_import_agent],
+
 )

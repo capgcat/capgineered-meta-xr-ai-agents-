@@ -1,12 +1,12 @@
 sources:
   postgresql: # GCP -  CLOUD SQL
     kind: cloud-sql-postgres
-    project: ${PROJECT_ID}
+    project: "hacker2025-team-63-dev"
     region: us-central1
     instance: wavelengthwonders
     database: predictions-data
-    user: ${DB_USER}
-    password: ${DB_PASS}
+    user: postgres
+    password: WavelengthWonders
 tools:
   fetch-device-info:
     kind: postgres-sql

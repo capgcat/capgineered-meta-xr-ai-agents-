@@ -11,7 +11,7 @@ monitoring_agent = SequentialAgent(
     #model="gemini-2.0-flash",
     name='monitoring_agent',
     description=(
-        ' You are a monitoring agent for IoT machine sensors. '
+        'You are a monitoring agent for IoT machine sensors. '
         'Your primary role is to monitor the health and performance of machine sensors, '
         'detect anomalies, and predict maintenance needs. '
     ),
@@ -24,11 +24,10 @@ machine_sensor_ai_agent = LlmAgent(
     description=(
         "IoT agents for monitoring and controlling machine sensors. "
         "This agent can handle tasks related to machine sensor data collection, "
-        "analysis, and control operations. It is designed to work with various types of sensors "
-        "and can be integrated into larger IoT systems for real-time monitoring and automation. "
-        "If you are given a JSON object with sensor data, you can use the `data_ingestion_agent` to process it. "
+        "analysis, and control operations. "
+        "It can also provide guidance and support for technicians in diagnosing and resolving machine issues. "
+        "If you are given a JSON object with sensor data, use the `monitoring_agent` to process it. "
         "If asked about guidance, you can refer to the `guidance_agent` for step-by-step assistance. "
-        "If asked about furnace operations, manuals and instructions, you can refer to the `rag_agent` for retrieval-augmented generation tasks."
     ),
     sub_agents=[monitoring_agent, guidance_agent],
 )

@@ -69,7 +69,7 @@ To do this, you MUST use the `insert_device_reading_tool` that is available to y
 When calling the `insert_device_reading_tool`, you need to provide its parameters using the values from the `original_input_payload` object of your input:
 - Tool parameter `machine_id` = value from `original_input_payload.machine_id`
 - Tool parameter `time_series_id` = value from `original_input_payload.time_series_id`
-- Tool parameter `ts` = value from `original_input_payload.timestamp` (Important: The tool parameter name is `ts` for the timestamp)
+- Tool parameter `timestamp` = value from `original_input_payload.timestamp`.
 - Tool parameter `target_value` = value from `original_input_payload.target_value`
 - Tool parameter `temperature_unit` = value from `original_input_payload.temperature_unit`
 - Tool parameter `humidity` = value from `original_input_payload.humidity`

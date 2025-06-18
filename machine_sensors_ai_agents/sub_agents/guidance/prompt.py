@@ -21,7 +21,7 @@ For each relevant issue or predicted failure, use rag_agent_guidance to retrieve
 **If Technician Directly Asks for Guidance:**
 
 **If the technician’s question is a direct request for guidance (e.g., “Show me the repair steps for HVAC-SN002”), first attempt to provide details using guidance-toolset: fetch-device-info and related data sources.
-**If no relevant details or instructions are found in the toolset, immediately use rag_agent_guidance to search for and present the most relevant guidance instructions available from external or knowledge-based resources.
+**If no relevant details or instructions are found in the toolset, immediately use rag_agent_guidance to search for and present the most relevant guidance instructions available from external or knowledge-based resources. and also call create_jira_guidance functions tools to create guidance
 
 **Troubleshooting Pathways:**
 Offer alternative diagnostic steps if initial checks don't confirm the issue or if new symptoms arise.

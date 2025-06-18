@@ -22,6 +22,7 @@ cloudpickle = "^3.0.0"
 deprecated = "^1.2.18"
 toolbox-core = "^0.2.0"
 llama_index = "0.12"
+jira="3.8.0"
 
 [tool.poetry.scripts]
 deploy-remote = "deployment.remote:main"

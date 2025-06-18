@@ -40,13 +40,16 @@ Proactive, intelligent insights for SOC analysts via InsightOps (SOC Notificatio
 Automated SME coordination and guided incident resolution
 
 # Meet the AI Agents
-Agent Name	Role & Functionality
-DataSage	Ingests and centralizes all operational and sensor data
-Anomalyze	Detects anomalies and provides contextual alerts
-Predicta	Predicts failures and recommends/prevents escalation
-AutoTune	Executes self-healing actions (e.g., auto-adjusts machine parameters)
-GuideXR	Delivers immersive, step-by-step XR/VR guidance to technicians
-InsightOps	Notifies SOC analysts and orchestrates incident management
+Our AI-driven platform orchestrates a suite of specialized agents to deliver end-to-end, proactive machine monitoring, maintenance, and incident response. The core orchestrator, **Machine Sensor AI Agent**, coordinates two main flows: monitoring and technician guidance.
+- **Monitoring Agent (with subagents):**
+
+**DataSage** ingests and centralizes all operational and sensor data, creating a unified data foundation.
+**Anomalyze** continuously detects anomalies, providing contextual alerts for early issue identification.
+**Predicta** leverages historical and real-time data to predict failures and recommend preventive actions, reducing unplanned downtime.
+**AutoTune** executes self-healing actions, such as auto-adjusting machine parameters, to resolve issues autonomously and minimize manual intervention.
+**InsightOps** notifies SOC analysts and orchestrates incident management, ensuring rapid response and compliance.
+- ** Guidance Agent:**
+GuideXR delivers immersive, step-by-step XR/VR guidance to technicians, accelerating repairs and reducing errors.
 
 # Solution Architecture
 ![Alt text](https://github.com/user-attachments/assets/72ac236c-8f63-4e8d-8495-51fc95e45ba2)
@@ -62,9 +65,9 @@ InsightOps	Notifies SOC analysts and orchestrates incident management
 - Real-time feedback loop for anomaly detection, prediction, and guidance
 
 # ADK Web & Mixed Reality Integration
-![Alt text](https://https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/main/images/flow.png)
 - **Web Dashboard** for SOC and management
 - **Mixed Reality (XR/VR)**  for immersive technician guidance
+![Alt text](https://github.com/user-attachments/assets/1da7785a-3d78-4deb-ab36-efff25367d1d)
 
 # Under the Hood: Our Technology Stack
 - **Python 3.10+** (Poetry for dependency management)

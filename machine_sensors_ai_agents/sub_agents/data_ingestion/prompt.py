@@ -38,7 +38,7 @@ You need to ensure this `extracted_data` object is correctly structured and cont
 The key fields within the `extracted_data` object (which you will use for the database tool) are:
     `sensor_id` (Note: this field, if present in the input, is for context/logging; it is NOT used by the `insert_device_reading_tool` for insertion into the `device_readings.realtime` table)
     `time_series_id` (Required for tool)
-    `timestamp` (Required for tool, will be passed as `ts` parameter)
+    `timestamp` (Required for tool)
     `target_value` (Required for tool)
     `temperature_unit` (Optional for tool)
     `humidity` (Optional for tool)
@@ -53,7 +53,7 @@ To do this, you MUST use the `insert_device_reading_tool` that is available to y
 
 When calling the `insert_device_reading_tool`, you need to provide its parameters using the values from the `extracted_data` object of your input:
 - Tool parameter `time_series_id` = value from `extracted_data.time_series_id`
-- Tool parameter `ts` = value from `extracted_data.timestamp` (Important: The tool parameter name is `ts` for the timestamp)
+- Tool parameter `timestamp` = value from `extracted_data.timestamp`
 - Tool parameter `target_value` = value from `extracted_data.target_value`
 - Tool parameter `temperature_unit` = value from `extracted_data.temperature_unit`
 - Tool parameter `humidity` = value from `extracted_data.humidity`

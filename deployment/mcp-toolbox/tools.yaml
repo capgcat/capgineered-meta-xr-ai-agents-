@@ -119,60 +119,102 @@ tools:
         @machine_id, @time_series_id, @timestamp, @target_value, @temperature_unit,
         @humidity, @battery_level, @location, @status, @received_at,
         PARSE_JSON(@metadata), @image_desc_generation_output, @image_url
-      );
-  anomaly_insights_by_type:
-      kind: bigquery-sql
-      source: bigquery_connection
-      description: |
-        Retrieves all anomaly insights filtered by a specific machine_id.
-        If a user asks about 'sensor data type' or 'sensor data', consider it the same as 'machine_id'.
-      parameters:
-        - name: machine_id
-          type: string
-          description: "The type of observation to filter anomalies by (e.g., 'FURNACE-SN001', 'FURNACE-SN002'). This parameter is required."
-      statement: |
-        SELECT
-          *
-        FROM
-          device_readings.realtime_sensor
-        WHERE
-          machine_id = @machine_id;  
-  anomaly_insights_by_machine_id:
-      kind: bigquery-sql
-      source: bigquery_connection
-      description: |
-        Retrieves all anomaly insights filtered by a specific machine_id.
-        If a user asks about 'sensor data type' or 'sensor data', consider it the same as 'machine_id'.
-      parameters:
-        - name: machine_id
-          type: string
-          description: "The type of observation to filter anomalies by (e.g., 'FURNACE-SN001', 'FURNACE-SN002'). This parameter is required."
-      statement: |
-        SELECT
-          *
-        FROM
-          device_readings.realtime_sensor
-        WHERE
-          machine_id = @machine_id;          
-  anomaly_insights_all:
+      );         
+  anomaly_insights:
     kind: bigquery-sql
     source: bigquery_connection
     description: |
-      Retrieves all anomaly insights without applying any observation type filter.
-      Useful for general queries like 'list all anomalies' or 'show complete anomaly data'.
+      Retrieve anomaly insights for a specific machine based on its ID.
+      This tool checks for anomalies in temperature, humidity, and battery level.
     statement: |
-      SELECT
-        *
-      FROM
-        device_readings.realtime_sensor;
+      WITH anomaly_detection AS (
+        SELECT
+          machine_id,
+          timestamp,
+          target_value AS temperature,
+          humidity,
+          battery_level,
+          location,
+          CASE
+            WHEN target_value > 35 THEN 'ANOMALY: Overheating'
+            WHEN humidity < 20 THEN 'ANOMALY: Low Humidity'
+            WHEN humidity > 80 THEN 'ANOMALY: High Humidity'
+            WHEN battery_level < 20 THEN 'ANOMALY: Low Battery'
+            ELSE 'NORMAL'
+          END AS anomaly_status
+        FROM `hacker2025-team-63-dev.device_readings.realtime_sensor`
+        WHERE timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 60 MINUTE)
+      )
+
+      SELECT * FROM anomaly_detection
+      WHERE anomaly_status != 'NORMAL'
+      ORDER BY machine_id, timestamp; # Note: $1 should likely be @machine_id for BigQuery, and ORDER BY should be part of the main SELECT.
+  insert-machine-anomaly:
+    kind: postgres-sql
+    source: pg-source
+    description: |
+      Inserts a machine anomaly record into the machine_anomalies table in PostgreSQL.
+      The event_id should be a unique identifier for this anomaly event.
+      For optional fields not provided, the calling agent should pass NULL.
+    parameters:
+      - name: event_id
+        type: string
+        description: "Unique identifier for the anomaly event (primary key)."
+      - name: device_id
+        type: string
+        description: "Identifier for the device associated with the anomaly (foreign key, NOT NULL)."
+      - name: machine_id
+        type: string
+        description: "Identifier for the machine. Optional."
+      - name: location
+        type: string
+        description: "Location of the machine. Optional."
+      - name: time_window_start
+        type: string
+        description: "The start of the time window for the anomaly (e.g., 'YYYY-MM-DDTHH:MM:SSZ'). Optional. Will be cast to TIMESTAMP."
+      - name: avg_temp
+        type: float
+        description: "The average temperature observed during the window (maps to DOUBLE PRECISION). Optional."
+      - name: humidity
+        type: float
+        description: "The average humidity observed during the window (maps to DOUBLE PRECISION). Optional."
+      - name: battery_level
+        type: float
+        description: "The battery level of the machine at the time of the anomaly (maps to DOUBLE PRECISION). Optional."
+      - name: description
+        type: string
+        description: "A textual description of the anomaly or observation. Optional."
+      - name: anomaly_status
+        type: string
+        description: "Status of the anomaly (e.g., 'ANOMALY', 'NORMAL'). Optional."
+    statement: |
+      INSERT INTO machine_anomalies (
+        event_id, device_id, machine_id, location, time_window_start,
+        avg_temp, humidity, battery_level, description, anomaly_status, inserted_at
+      ) VALUES (
+        @event_id, @device_id, @machine_id, @location, CAST(@time_window_start AS TIMESTAMP),
+        @avg_temp, @humidity, @battery_level, @description, @anomaly_status, CURRENT_TIMESTAMP
+      );
+  fetch-machine-anomaly:
+    kind: postgres-sql
+    source: pg-source
+    description: |
+      Fetches machine anomaly records from the machine_anomalies table, optionally filtered by machine_id.
+    parameters:
+      - name: machine_id
+        type: string
+        description: "Identifier for the machine to fetch anomalies for. If not provided, all anomalies might be returned (depending on implementation details not covered here, typically you'd want a filter)."
+    statement: |
+      SELECT * FROM machine_anomalies
+      WHERE machine_id = @machine_id
+      ORDER BY inserted_at DESC;
 toolsets:
   iot_device_toolset: # Optional: grouping the new tool
     - insert_device_reading_tool
   anomaly_toolset:
-    - anomaly_insights_by_machine_id
-    - insert-device-info
+    - anomaly_insights # Corrected from anomaly_insights_by_machine_id based on previous context if that tool was renamed/modified
+    - insert-machine-anomaly
   guidance-toolset:
     - fetch-device-info
   predictions-toolset: 
-    - anomaly_insights_by_type
-    - anomaly_insights_all
+    - fetch-machine-anomaly

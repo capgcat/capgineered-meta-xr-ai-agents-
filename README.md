@@ -1,4 +1,4 @@
-![Alt text](https://https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/main/images/00.png)
+![Alt text](https://github.com/user-attachments/assets/3c785ed9-c064-4b39-8c1d-534b0d388c22)
 
 # Industrial AI Safety Suite: Intelligent Guidance for Safer Operations
 Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform designed to transform industrial safety and operational reliability. Our system leverages IoT monitoring, immersive XR/VR guidance, and centralized knowledge (RAG/Vector Store) to empower both technicians and SOC analysts, making industrial environments safer, smarter, and more efficient.
@@ -49,16 +49,18 @@ GuideXR	Delivers immersive, step-by-step XR/VR guidance to technicians
 InsightOps	Notifies SOC analysts and orchestrates incident management
 
 # Solution Architecture
-![Alt text](https://https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/main/images/architecture.png)
+![Alt text](https://github.com/user-attachments/assets/72ac236c-8f63-4e8d-8495-51fc95e45ba2)
 - **IoT Sensors → DataSage → RAG/Vector Store → Anomalyze/Predicta/AutoTune** 
 - GuideXR & InsightOps interface with users via XR/VR and web dashboards
 - Incident Management is orchestrated with automated SME coordination
 
 # Data Ingestion & Flow
-![Alt text](https://https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/main/images/dataflow.png)
+![Alt text](https://github.com/user-attachments/assets/7decd02c-287c-4da0-9d7c-aaf2cfeba928)
+![Alt text](https://github.com/user-attachments/assets/84053662-4f1a-4925-aec5-2fdd797618cb)
 - Continuous ingestion of sensor, visual, and manual data
 - Centralized knowledge base for up-to-date context
 - Real-time feedback loop for anomaly detection, prediction, and guidance
+
 # ADK Web & Mixed Reality Integration
 ![Alt text](https://https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/main/images/flow.png)
 - **Web Dashboard** for SOC and management

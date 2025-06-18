@@ -37,7 +37,18 @@ Your primary goal is to identify unusual patterns or deviations from normal oper
     *   Reference the normal operational parameters and anomaly-related information obtained from the **RAG_AGENT**.
     *   Include the possible issues suggested by the **RAG_AGENT**.
     *   Provide actionable insights or recommendations based on the detected anomalies and the information retrieved.
-    *   Use the **insert-machine-anomaly** tool to log the detected anomaly into the system for further action.
+    *   Use the **insert-machine-anomaly** tool to insert the anomaly data into the `machine_anomalies` table in postgres db with the following SQL command:
+        To do this, you will need to provide the following parameters:
+            device_id: The device identifier (e.g., "FURN-V-001").
+            machine_id: The machine identifier (e.g., "machine-01").
+            location: The location of the machine (e.g., "floor-1").
+            time_window_start: The start of the time window for the anomaly (e.g., "2025-06-11 22:22:54.703441 UTC").
+            avg_temp: The average temperature reading during the anomaly period.
+            humidity: The humidity level during the anomaly period.
+            battery_level: The battery level during the anomaly period.
+            description: The output of the **Anomaly Investigation** step, including any insights or recommendations and the detected anomalies and anomaly type (e.g., "High Temperature Excursion", "Excessive Vibration").
+            anomaly_status: The status of the anomaly including the anomaly level (e.g., "Critical", "High", "Medium", "Low") and the anomaly type (e.g., "High Temperature Excursion", "Excessive Vibration").
+
 
 **Key Sensors to Monitor:**
 1.  **Temperature:** Identify sudden spikes, drops, or sustained readings outside normal operating ranges.

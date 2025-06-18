@@ -70,3 +70,27 @@ gcloud pubsub subscriptions create iot-realtime-subscription \
     "image_url": "gs://device_readings_image/green_light.jpeg"
   }
 }
+
+{
+  "data_source": "api-sensor-system",
+  "extracted_data": {
+    "machine_id": "furnace_1",
+    "time_series_id": "sensor-1234",
+    "timestamp": "2025-06-17 14:02:30 UTC",
+    "received_at": "2025-06-17 14:02:30 UTC",
+    "target_value": 36.5,
+    "temperature_unit": "Celsius",
+    "humidity": 25.4,
+    "battery_level": 65.3,
+    "location": "Furnace Room 1",
+    "status": "ANOMALY: Overheating",
+    "metadata": {
+      "mode": "Auto",
+      "phase": "Preheat",
+      "controller": "v2.3"
+    },
+    "image_url": "gs://device_readings_image/red_light2.jpeg",
+    "image_desc_generation_output": "",
+    "observation_type": "temperature"
+  }
+}

@@ -124,61 +124,66 @@ tools:
     kind: bigquery-sql
     source: bigquery_connection
     description: |
-      Retrieve anomaly insights for a specific machine based on its ID.
-      This tool checks for anomalies in temperature, humidity, and battery level.
+      Retrieve anomaly insights for a specific machine based on its ID, by calculating average temperature, average humidity, and average battery level over the last 5 minutes and comparing them to thresholds.
+    parameters:
+      - name: machine_id
+        type: string
+        description: The unique identifier of the machine to fetch anomaly insights for.
     statement: |
-      WITH anomaly_detection AS (
+      WITH recent_data AS (
         SELECT
           machine_id,
           timestamp,
           target_value AS temperature,
           humidity,
           battery_level,
-          location,
-          CASE
-            WHEN target_value > 35 THEN 'ANOMALY: Overheating'
-            WHEN humidity < 20 THEN 'ANOMALY: Low Humidity'
-            WHEN humidity > 80 THEN 'ANOMALY: High Humidity'
-            WHEN battery_level < 20 THEN 'ANOMALY: Low Battery'
-            ELSE 'NORMAL'
-          END AS anomaly_status
+          location
         FROM `hacker2025-team-63-dev.device_readings.realtime_sensor`
-        WHERE timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 60 MINUTE)
+        WHERE timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)  -- Get data from the last 5 minutes
+          AND machine_id = @machine_id
       )
 
-      SELECT * FROM anomaly_detection
-      WHERE anomaly_status != 'NORMAL'
-      ORDER BY machine_id, timestamp; # Note: $1 should likely be @machine_id for BigQuery, and ORDER BY should be part of the main SELECT.
+      SELECT
+        machine_id,
+        location,
+        timestamp as time_window_start,
+        AVG(temperature) AS avg_temperature,
+        AVG(humidity) AS avg_humidity,
+        AVG(battery_level) AS avg_battery_level,
+        CASE
+          WHEN AVG(temperature) > 35 THEN 'ANOMALY: Overheating'
+          WHEN AVG(humidity) < 20 THEN 'ANOMALY: Low Humidity'
+          WHEN AVG(humidity) > 80 THEN 'ANOMALY: High Humidity'
+          ELSE 'NORMAL'
+        END AS anomaly_status
+      FROM recent_data
+      GROUP BY machine_id, location, timestamp
+      ORDER BY timestamp
+      LIMIT 1;
+
   insert-machine-anomaly:
     kind: postgres-sql
     source: pg-source
     description: |
       Inserts a machine anomaly record into the machine_anomalies table in PostgreSQL.
-      The event_id should be a unique identifier for this anomaly event.
       For optional fields not provided, the calling agent should pass NULL.
     parameters:
-      - name: event_id
-        type: string
-        description: "Unique identifier for the anomaly event (primary key)."
-      - name: device_id
-        type: string
-        description: "Identifier for the device associated with the anomaly (foreign key, NOT NULL)."
       - name: machine_id
         type: string
-        description: "Identifier for the machine. Optional."
+        description: "Identifier for the machine."
       - name: location
         type: string
-        description: "Location of the machine. Optional."
+        description: "Location of the machine."
       - name: time_window_start
         type: string
         description: "The start of the time window for the anomaly (e.g., 'YYYY-MM-DDTHH:MM:SSZ'). Optional. Will be cast to TIMESTAMP."
       - name: avg_temp
         type: float
         description: "The average temperature observed during the window (maps to DOUBLE PRECISION). Optional."
-      - name: humidity
+      - name: avg_humidity
         type: float
         description: "The average humidity observed during the window (maps to DOUBLE PRECISION). Optional."
-      - name: battery_level
+      - name: avg_battery_level
         type: float
         description: "The battery level of the machine at the time of the anomaly (maps to DOUBLE PRECISION). Optional."
       - name: description
@@ -189,11 +194,11 @@ tools:
         description: "Status of the anomaly (e.g., 'ANOMALY', 'NORMAL'). Optional."
     statement: |
       INSERT INTO machine_anomalies (
-        event_id, device_id, machine_id, location, time_window_start,
-        avg_temp, humidity, battery_level, description, anomaly_status, inserted_at
+        machine_id, location, time_window_start,
+        avg_temp, avg_humidity, avg_battery_level, description, anomaly_status, inserted_at
       ) VALUES (
-        @event_id, @device_id, @machine_id, @location, CAST(@time_window_start AS TIMESTAMP),
-        @avg_temp, @humidity, @battery_level, @description, @anomaly_status, CURRENT_TIMESTAMP
+        @machine_id, @location, CAST(@time_window_start AS TIMESTAMP),
+        @avg_temp, @avg_humidity, @avg_battery_level, @description, @anomaly_status, CURRENT_TIMESTAMP
       );
   fetch-machine-anomaly:
     kind: postgres-sql

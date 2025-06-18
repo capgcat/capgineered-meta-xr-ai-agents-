@@ -69,17 +69,16 @@ CREATE TABLE ticket (
 );
 
 CREATE TABLE machine_anomalies (
-  event_id VARCHAR(255) PRIMARY KEY,
-  device_id VARCHAR(255) NOT NULL,
+  event_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   machine_id VARCHAR(255) ,
   location VARCHAR(255) ,
   time_window_start TIMESTAMP,
   avg_temp DOUBLE PRECISION,
-  humidity DOUBLE PRECISION,
-  battery_level DOUBLE PRECISION,
+  avg_humidity DOUBLE PRECISION,
+  avg_battery_level DOUBLE PRECISION,
   description VARCHAR(100),
   anomaly_status VARCHAR(255) ,
-  inserted_at TIMESTAMP
+  inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -101,4 +100,3 @@ INSERT INTO service_technician (first_name, last_name, email, phone_number, spec
 ('John', 'Smith', 'john.smith@example.com', '555-0101', 1, TRUE), -- Specializes in Furnaces
 ('Alice', 'Brown', 'alice.brown@example.com', '555-0102', 2, TRUE), -- Specializes in HVAC Units
 ('Bob', 'Johnson', 'bob.johnson@example.com', '555-0103', 1, TRUE); -- Also specializes in Furnaces
-

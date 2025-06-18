@@ -6,9 +6,9 @@ sources:
     kind: postgres
     host: 127.0.0.1
     port: 5432
-    database: predictions-data
-    user: postgres
-    password: root  
+    database: wavelengthwonders
+    user: admin
+    password: admin  
 tools:
   fetch-device-info:
     kind: postgres-sql

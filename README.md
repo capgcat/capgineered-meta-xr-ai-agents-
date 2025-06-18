@@ -4,17 +4,17 @@
 Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform designed to transform industrial safety and operational reliability. Our system leverages IoT monitoring, immersive XR/VR guidance, and centralized knowledge (RAG/Vector Store) to empower both technicians and SOC analysts, making industrial environments safer, smarter, and more efficient.
 
 # 🌍 Explore the Project : Click below to navigate
-🔍 [The Challenge: Risk & Inefficiency in Industrial Operations](#The Challenge: Risk & Inefficiency in Industrial Operations)  
-🤖[Solution : Insights, Self-Healing, Real-Time Immersive Guidance](#Our Solution: The Agentic Safety Platform)  
-📱 [Meet the AI Agents](#Meet the AI Agents)  
+🔍 [The Challenge: Risk & Inefficiency in Industrial Operations](#the-challenge-risk--inefficiency-in-industrial-operations)  
+🤖 [Solution: Insights, Self-Healing, Real-Time Immersive Guidance](#our-solution-the-agentic-safety-platform)  
+📱 [Meet the AI Agents](#meet-the-ai-agents)  
 🌐 [Solution Architecture](#solution-architecture)  
-🧭 [Data Ingestion & Flow](#Data Ingestion & Flow) 
-🌐 [ADK Web & Mixed Reality Integration](#ADK Web & Mixed Reality Integration) 
-🛠️ [Under the Hood: Our Technology Stack](#under-the-hood-our-technology-stack)  
-💻 [Project Structure]](#project-setup-guide)
-🔐 [Quickstart: Project Setup Guide](#Quickstart: Project Setup Guide)  
-🎬 [Live Demo Walkthrough](#Live Demo Walkthrough)  
-🚀 [What’s Next: Our Vision](#What’s Next: Our Vision)  
+🧭 [Data Ingestion & Flow](#data-ingestion--flow)  
+🌐 [ADK Web & Mixed Reality Integration](#adk-web--mixed-reality-integration)  
+🛠️ [Under the Hood: Our Technology Stack](#technology-stack)  
+💻 [Project Structure](#exploring-the-codebase)  
+🔐 [Quickstart: Project Setup Guide](#quickstart-project-setup-guide)  
+🎬 [Live Demo Walkthrough](#live-demo-walkthrough)  
+🚀 [What’s Next: Our Vision](#whats-next-our-vision)  
 👨‍💻 [Contributors](#contributors)
 
 

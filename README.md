@@ -4,12 +4,12 @@
 Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform designed to transform industrial safety and operational reliability. Our system leverages IoT monitoring, immersive XR/VR guidance, and centralized knowledge (RAG/Vector Store) to empower both technicians and SOC analysts, making industrial environments safer, smarter, and more efficient.
 
 # 🌍 Explore the Project : Click below to navigate
-🔍 [The Challenge: Risk & Inefficiency in Industrial Operations](#the-challenge-risk--inefficiency-in-industrial-operations)  
-🤖 [Solution: Insights, Self-Healing, Real-Time Immersive Guidance](#our-solution-the-agentic-safety-platform)  
-📱 [Meet the AI Agents](#meet-the-ai-agents)  
-🌐 [Solution Architecture](#solution-architecture)  
-🧭 [Data Ingestion & Flow](#data-ingestion--flow)  
-🌐 [ADK Web & Mixed Reality Integration](#adk-web--mixed-reality-integration)  
+🔍 [Problem Statement and Target Users](#the-challenge-risk--inefficiency-in-industrial-operations)  
+🤖 [Solution and Technical Components](#our-solution-the-agentic-safety-platform)
+🚀 [Meet the AI Agents](#meet-the-ai-agents)  
+📱 [Relevant Metrics](#relevant-metrics)
+🌐 [Execution Plan](#execution-agents)   
+🧭 [Data Ingestion & Flow](#data-ingestion--flow)
 🛠️ [Under the Hood: Our Technology Stack](#technology-stack)  
 💻 [Project Structure](#exploring-the-codebase)  
 🔐 [Quickstart: Project Setup Guide](#quickstart-project-setup-guide)  
@@ -18,26 +18,55 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 👨‍💻 [Contributors](#contributors)
 
 
-# The Challenge: Risk & Inefficiency in Industrial Operations
+# Problem Statement and Target Users
+## Problem Statement:
+Industrial operations depend on complex, high-value machinery where unplanned downtime, slow repairs, or incorrect maintenance can cause significant financial losses, safety risks, and productivity drops. Traditional maintenance is often reactive, siloed, and lacks real-time intelligence, leading to delayed fault detection, inefficient troubleshooting, and increased risk of human error—especially for less experienced technicians.
 - Despite significant investments in safety manuals, operational guidelines, and audits, critical information remains fragmented and inconsistently applied. This leads to:
 - Inefficient monitoring and delayed anomaly detection
 - Prolonged incident resolution
 - Increased risk and unplanned downtime
 
+## Target Users:
 
-# Our Solution: The Agentic Safety Platform
-We introduce a groundbreaking agentic system that centralizes all operational knowledge and delivers three core capabilities:
-- **1. Intelligent Insights**
-Unified, up-to-date operational data via DataSage (Data Ingestion Agent)
-Richer context for anomaly detection and prediction with Anomalyze (Anomaly Detection Agent)
-Actionable problem descriptions for SOC and field technicians
-- **2. Proactive Prevention (Self-Healing)** 
-Predicts machine issues using IoT data with Predicta (Prediction Agent)
-Automated adjustments (e.g., temperature/humidity) to prevent escalation via AutoTune (Self-Healing Agent)
-- **3. Real-Time Immersive Guidance** 
-Step-by-step XR/VR troubleshooting for technicians with GuideXR (Guidance Agent)
-Proactive, intelligent insights for SOC analysts via InsightOps (SOC Notification Agent)
-Automated SME coordination and guided incident resolution
+- **Maintenance Technicians:** Need real-time, step-by-step guidance to perform complex repairs safely and efficiently.
+- **Operations Managers:** Require predictive insights to minimize downtime and optimize maintenance schedules.
+- **Industrial Safety Officers:** Need assurance that maintenance follows safety protocols and compliance standards.
+- **IT/OT Administrators:** Responsible for integrating secure, scalable AI solutions with existing IoT and enterprise systems.
+
+
+
+
+# Solution and Technical Components
+## Overview:
+The solution is a GenAI-powered, agentic mixed reality maintenance system that integrates IoT sensor data, cloud-based AI, and Meta Quest 3 AR headsets. It delivers real-time anomaly detection, predictive maintenance, prioritized notifications, and immersive AR-guided repair procedures.
+## Solution Architecture
+![image](https://github.com/user-attachments/assets/520a1913-0af9-4f82-b4ff-332b090beb59)
+
+## Key Features:
+
+- **Real-time Anomaly Detection:** AI agents continuously analyze sensor data (temperature, vibration, current, etc.) to detect abnormal patterns.
+- **Predictive Maintenance:** ML models forecast potential failures, enabling proactive interventions.
+- **Automated Notifications & Escalation:** Alerts are prioritized and sent via email, SMS, or push notifications based on severity and urgency.
+- **AR Guidance:** Meta Quest 3 overlays step-by-step repair instructions and virtual manuals directly onto the affected machinery, reducing error rates and training time.
+- **Secure Data Flow:** Ensures compliance with safety protocols and secure transmission from IoT sensors to cloud and headset.
+
+
+## Technical Components:
+- **Google Agentic AI Tools:**
+- **Gemini 2.0 Flash:** For fast, accurate LLM-based reasoning and guidance.
+- **Vertex AI:** For ML model deployment and real-time inference (if used).
+
+## APIs & Integrations:- 
+- **IoT Sensor APIs:** For real-time data ingestion.
+- **Jira API:** For automated ticket creation and dashboard integration.
+- **Meta Quest 3 SDK:** For AR overlay and headset integration.
+## Datasets:
+- Historical and real-time sensor data.
+- Maintenance logs and manuals.
+- Anomaly and failure event datasets.
+## 3rd Party Tools:
+- Jira (for ticketing and dashboards).
+- Cloud storage (for manuals, images, logs).
 
 # Meet the AI Agents
 Our AI-driven platform orchestrates a suite of specialized agents to deliver end-to-end, proactive machine monitoring, maintenance, and incident response. The core orchestrator, **Machine Sensor AI Agent**, coordinates two main flows: monitoring and technician guidance.
@@ -82,25 +111,12 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 
 ![image](https://github.com/user-attachments/assets/520a1913-0af9-4f82-b4ff-332b090beb59)
 
-
-# Solution Architecture
-
-- **IoT Sensors → DataSage → RAG/Vector Store → Anomalyze/Predicta/AutoTune** 
-- GuideXR & InsightOps interface with users via XR/VR and web dashboards
-- Incident Management is orchestrated with automated SME coordination
-
 # Data Ingestion & Flow
 ![Alt text](https://github.com/user-attachments/assets/7decd02c-287c-4da0-9d7c-aaf2cfeba928)
 ![Alt text](https://github.com/user-attachments/assets/84053662-4f1a-4925-aec5-2fdd797618cb)
 - Continuous ingestion of sensor, visual, and manual data
 - Centralized knowledge base for up-to-date context
 - Real-time feedback loop for anomaly detection, prediction, and guidance
-
-# ADK Web & Mixed Reality Integration
-- **Web Dashboard** for SOC and management
-- **Mixed Reality (XR/VR)**  for immersive technician guidance
-![image](https://github.com/user-attachments/assets/f6ffce78-202e-4d21-b6a7-7eb4da2a12a6)
-
 
 # Under the Hood: Our Technology Stack
 - **Python 3.10+** (Poetry for dependency management)

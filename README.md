@@ -41,15 +41,46 @@ Automated SME coordination and guided incident resolution
 
 # Meet the AI Agents
 Our AI-driven platform orchestrates a suite of specialized agents to deliver end-to-end, proactive machine monitoring, maintenance, and incident response. The core orchestrator, **Machine Sensor AI Agent**, coordinates two main flows: monitoring and technician guidance.
-- **Monitoring Agent (with subagents):**
 
-**DataSage** ingests and centralizes all operational and sensor data, creating a unified data foundation.
-**Anomalyze** continuously detects anomalies, providing contextual alerts for early issue identification.
-**Predicta** leverages historical and real-time data to predict failures and recommend preventive actions, reducing unplanned downtime.
-**AutoTune** executes self-healing actions, such as auto-adjusting machine parameters, to resolve issues autonomously and minimize manual intervention.
-**InsightOps** notifies SOC analysts and orchestrates incident management, ensuring rapid response and compliance.
-- ** Guidance Agent:**
-GuideXR delivers immersive, step-by-step XR/VR guidance to technicians, accelerating repairs and reducing errors.
+**Core & Orchestration Agents:**
+- **Machine Sensor AI Agent (machine_sensor_ai_agent) (Root Agent)**
+The primary orchestrator for IoT machine sensors. This agent manages sensor data collection, analysis, and control operations, providing guidance to technicians. It delegates tasks to specialized sub-agents such as the monitoring_agent for data processing and the guidance_agent for support.
+
+- **Monitoring Agent (monitoring_agent)**
+Responsible for the overall health and performance monitoring of machine sensors. It sequentially manages data ingestion, then passes the data to detection agents for anomaly identification and predictive maintenance.
+
+- **Detection Agent (detection_agent)**
+Focuses on identifying issues within sensor data. It runs anomaly detection and predictive maintenance tasks in parallel to find current problems and forecast potential future failures. Its sub-agents (anomaly and prediction agents) typically invoke the notification_agent.
+
+- **Guidance Agent:**
+GuideXR delivers immersive, step-by-step XR/VR guidance to technicians, accelerating repairs and reducing errors.Provides step-by-step, actionable assistance and diagnostic guidance to technicians. It helps resolve machine issues based on predicted maintenance needs, detected anomalies, and information retrieved via a specialized RAG Agent for Guidance. This agent will also be used for SOC specialists and incident bridge calls.
+
+**Specialized Sub-Agents:**
+- **Anomaly Detection Agent (anomaly_agent)**
+Identifies abnormal patterns, unusual operational behavior, or deviations from normal sensor readings in real-time industrial sensor data. It utilizes a RAG agent for contextual information and can trigger notifications.
+
+- **Data Import Agent (data_import_agent)**
+Processes incoming data, primarily from the image_description_generation_agent. It ensures data is correctly structured, uses a RAG agent to determine sensor status based on operational context, and prepares the data for insertion into BigQuery.
+
+- **Data Ingestion Agent (data_ingestion_agent)**
+Manages the initial stages of data intake. It orchestrates the generation of image descriptions (if applicable) and then the data import process, ultimately ensuring sensor data is saved for further analysis.
+
+- **Image Description Generation Agent (image_desc_generation_agent)**
+An expert image analysis assistant. Its primary task is to describe images provided via Google Cloud Storage (GCS) URIs, using tools to fetch and analyze these images.
+
+- **Notification Agent (notification_agent)**
+Monitors machine anomalies and is responsible for creating Jira tickets for detected issues. It ensures tickets are correctly assigned and escalated based on predefined business rules and the severity of the anomaly, and can use a RAG agent for context.
+
+- **Prediction Maintenance Agent (prediction_maintainence_agent)**
+Analyzes anomaly alerts and historical data to forecast potential equipment failures. It recommends proactive maintenance actions, utilizing a RAG agent for broader contextual information and historical data, and can trigger notifications.
+
+- **RAG Agent (rag_agent)**
+An AI assistant that provides accurate and concise answers to questions by retrieving information from a specialized Retrieval Augmented Generation (RAG) corpus of documents. It is used by various other agents to fetch operational norms, historical data, and other relevant information.
+
+- **RAG Agent for Guidance (rag_agent_guidance)**
+Similar to the general RAG Agent, but this one is specifically configured to retrieve information from a RAG corpus dedicated to maintenance guidance, repair instructions, schematics, and technical documentation to support the guidance_agent. 
+
+
 
 # Solution Architecture
 ![image](https://github.com/user-attachments/assets/520a1913-0af9-4f82-b4ff-332b090beb59)

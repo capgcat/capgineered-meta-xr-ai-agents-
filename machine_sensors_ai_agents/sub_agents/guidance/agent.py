@@ -109,7 +109,7 @@ def fetch_jira_ticket(
         
 guidance_agent = Agent(
     name="guidance_agent",
-    model="gemini-2.0-flash",
+    model="gemini-2.5-pro",
     description="Provides step-by-step assistance and diagnostic guidance to technicians for resolving machine issues based on predicted maintenance needs and detected anomalies.",
     instruction=GUIDANCE_AGENT_INSTRUCTION,
     sub_agents=[rag_agent_guidance],  # Include the rag_agent_guidance for RAG capabilities

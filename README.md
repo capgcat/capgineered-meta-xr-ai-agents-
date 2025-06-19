@@ -268,22 +268,7 @@ adk web or adk run machine_sensors_ai_agents
 - Role-based access control for dashboards and agent actions
 - Data encryption in transit and at rest
 - Audit logs for all automated actions and recommendations
-- **BigQuery Schema:**
-[
-  {"name": "timestamp", "type": "TIMESTAMP", "mode": "REQUIRED"},
-  {"name": "machine_id", "type": "STRING", "mode": "REQUIRED"},
-  {"name": "observation_type", "type": "STRING", "mode": "REQUIRED"},
-  {"name": "sensor_id", "type": "STRING", "mode": "REQUIRED"},
-  {"name": "numeric_value", "type": "FLOAT", "mode": "NULLABLE"},
-  {"name": "unit", "type": "STRING", "mode": "NULLABLE"},
-  {"name": "string_value", "type": "STRING", "mode": "NULLABLE"},
-  {"name": "image_url", "type": "STRING", "mode": "NULLABLE"},
-  {"name": "bounding_box_coordinates", "type": "STRING", "mode": "NULLABLE"},
-  {"name": "observation_confidence", "type": "FLOAT", "mode": "NULLABLE"},
-  {"name": "threshold_lower", "type": "FLOAT", "mode": "NULLABLE"},
-  {"name": "threshold_upper", "type": "FLOAT", "mode": "NULLABLE"},
-  {"name": "ideal_visual_state", "type": "STRING", "mode": "NULLABLE"}
-]
+
 # Live Demo Walkthrough
 See It In Action:
 

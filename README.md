@@ -4,14 +4,14 @@
 Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform designed to transform industrial safety and operational reliability. Our system leverages IoT monitoring, immersive XR/VR guidance, and centralized knowledge (RAG/Vector Store) to empower both technicians and SOC analysts, making industrial environments safer, smarter, and more efficient.
 
 # 🌍 Explore the Project : Click below to navigate
-🔍 [Problem Statement and Target Users](#the-challenge-risk--inefficiency-in-industrial-operations)  
-🤖 [Solution and Technical Components](#our-solution-the-agentic-safety-platform)
+🔍 [Problem Statement and Target Users](#problem-statement-and-target-users)  
+🤖 [Solution and Technical Components](#solution-and-technical-components)  
 🚀 [Meet the AI Agents](#meet-the-ai-agents)  
-📱 [Relevant Metrics](#relevant-metrics)
-🌐[Execution Plan](#execution-plan)   
-🧭 [Data Ingestion & Flow](#data-ingestion--flow)
-🛠️ [Under the Hood: Our Technology Stack](#technology-stack)  
-💻 [Project Structure](#exploring-the-codebase)  
+📱 [Relevant Metrics](#relevant-metrics)  
+🌐 [Execution Plan](#execution-plan)  
+🧭 [Data Ingestion & Flow](#data-ingestion--flow)  
+🛠️ [Under the Hood: Our Technology Stack](#under-the-hood-our-technology-stack)  
+💻 [Project Structure](#project-structure)  
 🔐 [Quickstart: Project Setup Guide](#quickstart-project-setup-guide)  
 🎬 [Live Demo Walkthrough](#live-demo-walkthrough)  
 🚀 [What’s Next: Our Vision](#whats-next-our-vision)  

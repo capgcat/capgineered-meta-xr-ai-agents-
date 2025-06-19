@@ -6,9 +6,9 @@ sources:
     kind: postgres
     host: 127.0.0.1
     port: 5432
-    database: predictions-data
-    user: postgres
-    password: root  
+    database: wavelengthwonders
+    user: admin
+    password: admin  
 tools:
   fetch-device-info:
     kind: postgres-sql
@@ -119,12 +119,12 @@ tools:
         @machine_id, @time_series_id, @timestamp, @target_value, @temperature_unit,
         @humidity, @battery_level, @location, @status, @received_at,
         PARSE_JSON(@metadata), @image_desc_generation_output, @image_url
-      );         
-  anomaly_insights:
+      );
+  prediction_insights:
     kind: bigquery-sql
     source: bigquery_connection
     description: |
-      Retrieve anomaly insights for a specific machine based on its ID, by calculating average temperature, average humidity, and average battery level over the last 5 minutes and comparing them to thresholds.
+      Retrieve prediction insights for a specific machine based on its ID, by calculating average temperature, average humidity, and average battery level over the last 30 minutes and comparing them to thresholds.
     parameters:
       - name: machine_id
         type: string
@@ -139,7 +139,7 @@ tools:
           battery_level,
           location
         FROM `hacker2025-team-63-dev.device_readings.realtime_sensor`
-        WHERE timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)  -- Get data from the last 5 minutes
+        WHERE timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 120 MINUTE)  -- Get data from the last 60 minutes
           AND machine_id = @machine_id
       )
 
@@ -159,7 +159,47 @@ tools:
       FROM recent_data
       GROUP BY machine_id, location, timestamp
       ORDER BY timestamp
-      LIMIT 1;
+      LIMIT 1; ---just adding this since data is time sensitve and we put a big range in the time INTERVAL        
+  anomaly_insights:
+    kind: bigquery-sql
+    source: bigquery_connection
+    description: |
+      Retrieve anomaly insights for a specific machine based on its ID, by calculating average temperature, average humidity, and average battery level over the last 5 minutes and comparing them to thresholds.
+    parameters:
+      - name: machine_id
+        type: string
+        description: The unique identifier of the machine to fetch anomaly insights for.
+    statement: |
+      WITH recent_data AS (
+        SELECT
+          machine_id,
+          timestamp,
+          target_value AS temperature,
+          humidity,
+          battery_level,
+          location
+        FROM `hacker2025-team-63-dev.device_readings.realtime_sensor`
+        WHERE timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)  -- Supposed to be 5 minutes, but using 30 for more data points
+          AND machine_id = @machine_id
+      )
+
+      SELECT
+        machine_id,
+        location,
+        timestamp as time_window_start,
+        AVG(temperature) AS avg_temperature,
+        AVG(humidity) AS avg_humidity,
+        AVG(battery_level) AS avg_battery_level,
+        CASE
+          WHEN AVG(temperature) > 35 THEN 'ANOMALY: Overheating'
+          WHEN AVG(humidity) < 20 THEN 'ANOMALY: Low Humidity'
+          WHEN AVG(humidity) > 80 THEN 'ANOMALY: High Humidity'
+          ELSE 'NORMAL'
+        END AS anomaly_status
+      FROM recent_data
+      GROUP BY machine_id, location, timestamp
+      ORDER BY timestamp
+      LIMIT 1; -- just adding this since data is time sensitve and we put a big range in the time INTERVAL
 
   insert-machine-anomaly:
     kind: postgres-sql
@@ -216,11 +256,13 @@ toolsets:
   iot_device_toolset: # Optional: grouping the new tool
     - insert_device_reading_tool
   anomaly_toolset:
-    - anomaly_insights # Corrected from anomaly_insights_by_machine_id based on previous context if that tool was renamed/modified
+    - anomaly_insights 
     - insert-machine-anomaly
   guidance-toolset:
     - fetch-device-info
   predictions-toolset: 
+    - prediction-insights 
+    - insert-machine-anomaly
     - fetch-machine-anomaly
   notifications-toolset: 
     - fetch-machine-anomaly

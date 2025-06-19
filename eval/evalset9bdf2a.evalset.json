@@ -1,0 +1,602 @@
+{
+  "eval_set_id": "evalset9bdf2a",
+  "name": "evalset9bdf2a",
+  "description": null,
+  "eval_cases": [
+    {
+      "eval_id": "casee02f80",
+      "conversation": [
+        {
+          "invocation_id": "e-9736f322-6981-4b5f-808f-bdad2af07517",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "\"machine_id\": \"HVAC-SN004\",\n  \"time_series_id\": \"sensor-02\",\n  \"timestamp\": \"2024-06-11T14:22:00Z\",\n  \"target_value\": 98.7,\n  \"temperature_unit\": \"C\",\n  \"humidity\": 82.5,\n  \"battery_level\": 74.2,\n  \"location\": \"floor-1\",\n  \"status\": \"HIGH_ANOMALY\",\n  \"received_at\": \"2024-06-11T14:22:05Z\",\n  \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n  \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n  \"image_url\": \"gs://device_readings_image/red_alert.jpeg\""
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "**Anomaly Report**\n\n*   **Anomaly Type:** High Temperature Excursion\n*   **Affected Sensor(s):** Temperature Sensor (sensor-02)\n*   **Timestamp:** 2024-06-11T14:22:00Z\n*   **Current Value(s):** 98.7C\n*   **Expected Range/Baseline:** Unknown (RAG_AGENT indicated that high temperature is abnormal)\n*   **Severity:** Critical\n*   **Potential Cause (if inferable):** Possible welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller.\n*   **Recommended Action (if applicable):** Initiate a controlled shutdown of the furnace and perform a maintenance check.\n\nI have inserted the anomaly data into the `machine_anomalies` table.\n"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-a00684fb-147b-49e3-8d58-569df3e406e3",
+                "args": {
+                  "agent_name": "monitoring_agent"
+                },
+                "name": "transfer_to_agent"
+              },
+              {
+                "id": "adk-5b9193dd-eab5-4705-b1df-a4ec6bc29ef4",
+                "args": {
+                  "request": "What is the status of a sensor with the following readings: temperature=98.7C, humidity=82.5, battery level=74.2? The sensor is located on floor-1 and its machine ID is HVAC-SN004. The image associated with the sensor shows a red warning light, and the image description mentions a critically high temperature reading."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-b83ec119-9946-435a-b9e6-6a495134205d",
+                "args": {
+                  "time_series_id": "sensor-02",
+                  "battery_level": 74.2,
+                  "target_value": 98.7,
+                  "status": "ANOMALY: Based on the information provided, the sensor is reporting a critically high temperature reading. The image associated with the sensor shows a red warning light, which corroborates this. High temperature is Anomaly ID FURN-T-001, a high severity condition that indicates a critical failure in the heating control system. Potential causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller. Immediate action should be taken, such as performing a controlled shutdown of the furnace.",
+                  "machine_id": "HVAC-SN004",
+                  "timestamp": "2024-06-11T14:22:00Z",
+                  "location": "floor-1",
+                  "image_url": "gs://device_readings_image/red_alert.jpeg",
+                  "humidity": 82.5,
+                  "received_at": "2024-06-11T14:22:05Z",
+                  "temperature_unit": "C",
+                  "metadata": "{\"firmware_version\": \"v1.2.3\", \"sensor_type\": \"BME280\"}",
+                  "image_desc_generation_output": "Red warning light is on, temperature reading is critically high."
+                },
+                "name": "insert_device_reading_tool"
+              },
+              {
+                "id": "adk-7ce8ea35-2b21-4b09-9f9d-b308731fd736",
+                "args": {
+                  "machine_id": "HVAC-SN004"
+                },
+                "name": "fetch-machine-anomaly"
+              },
+              {
+                "id": "adk-f4d99ad9-31ae-4679-b180-0368ffab7a1f",
+                "args": {
+                  "machine_id": "HVAC-SN004"
+                },
+                "name": "fetch-machine-anomaly"
+              },
+              {
+                "id": "adk-1fc085d5-5599-4644-ac82-5634976849e4",
+                "args": {
+                  "machine_id": "HVAC-SN004"
+                },
+                "name": "anomaly_insights"
+              },
+              {
+                "id": "adk-da888800-c883-4215-a6fe-8ff5f4b30b49",
+                "args": {
+                  "request": "Retrieve maintenance logs and service history for HVAC-SN004."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-ae5111c0-3f15-4a63-ae4a-80e466693f7e",
+                "args": {
+                  "request": "Retrieve equipment specifications and operational manual for HVAC-SN004."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-6d0f7563-cbcc-4e9f-881a-70b8f8c06cb2",
+                "args": {
+                  "request": "Retrieve historical sensor data for HVAC-SN004, sensor-02, focusing on temperature trends over the past month."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-015c9f0c-7ca8-43aa-bb0e-de8649037d7e",
+                "args": {
+                  "time_window_start": "2024-06-11T14:22:00Z",
+                  "avg_humidity": 82.5,
+                  "machine_id": "HVAC-SN004",
+                  "avg_battery_level": 74.2,
+                  "description": "High Temperature Excursion detected. Temperature: 98.7C. Possible causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller. Immediate action should be taken, such as performing a controlled shutdown of the furnace.",
+                  "location": "floor-1",
+                  "anomaly_status": "Critical: High Temperature Excursion",
+                  "avg_temp": 98.7
+                },
+                "name": "insert-machine-anomaly"
+              }
+            ],
+            "intermediate_responses": [
+              [
+                "image_desc_generation_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "```json\n{\n  \"original_input_payload\": {\n    \"machine_id\": \"HVAC-SN004\",\n    \"time_series_id\": \"sensor-02\",\n    \"timestamp\": \"2024-06-11T14:22:00Z\",\n    \"target_value\": 98.7,\n    \"temperature_unit\": \"C\",\n    \"humidity\": 82.5,\n    \"battery_level\": 74.2,\n    \"location\": \"floor-1\",\n    \"status\": \"HIGH_ANOMALY\",\n    \"received_at\": \"2024-06-11T14:22:05Z\",\n    \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n    \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n    \"image_url\": \"gs://device_readings_image/red_alert.jpeg\"\n  },\n  \"image_desc_generation_output\": \"The image shows a close-up of a circular indicator light, glowing intensely red, set into a plain, light-colored surface. The light originates from a central point and reflects off dark, segmented internal components, all framed by a translucent outer ring.\"\n}\n```"
+                  }
+                ]
+              ],
+              [
+                "data_import_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "```json\n{\n  \"original_input_payload\": {\n    \"machine_id\": \"HVAC-SN004\",\n    \"time_series_id\": \"sensor-02\",\n    \"timestamp\": \"2024-06-11T14:22:00Z\",\n    \"target_value\": 98.7,\n    \"temperature_unit\": \"C\",\n    \"humidity\": 82.5,\n    \"battery_level\": 74.2,\n    \"location\": \"floor-1\",\n    \"status\": \"ANOMALY: Based on the information provided, the sensor is reporting a critically high temperature reading. The image associated with the sensor shows a red warning light, which corroborates this. High temperature is Anomaly ID FURN-T-001, a high severity condition that indicates a critical failure in the heating control system. Potential causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller. Immediate action should be taken, such as performing a controlled shutdown of the furnace.\",\n    \"received_at\": \"2024-06-11T14:22:05Z\",\n    \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n    \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n    \"image_url\": \"gs://device_readings_image/red_alert.jpeg\"\n  },\n  \"image_desc_generation_output\": \"The image shows a close-up of a circular indicator light, glowing intensely red, set into a plain, light-colored surface. The light originates from a central point and reflects off dark, segmented internal components, all framed by a translucent outer ring.\"\n}\n```\n\n"
+                  }
+                ]
+              ],
+              [
+                "data_import_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "The data was successfully inserted into BigQuery.\n"
+                  }
+                ]
+              ],
+              [
+                "notification_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "Okay, I will create a Jira ticket for the high anomaly detected on machine HVAC-SN004.\n\n"
+                  }
+                ]
+              ],
+              [
+                "prediction_maintainence_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "Okay, I will now perform a predictive maintenance analysis based on the provided information.\n\n**Step 1: Gather Historical Context**\n\nFirst, I need to retrieve historical anomaly data for the identified machine: HVAC-SN004.\n"
+                  }
+                ]
+              ],
+              [
+                "anomaly_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "OK. I will analyze the sensor data for anomalies.\n\n```json\n{\n    \"machine_id\": \"HVAC-SN004\",\n    \"time_series_id\": \"sensor-02\",\n    \"timestamp\": \"2024-06-11T14:22:00Z\",\n    \"target_value\": 98.7,\n    \"temperature_unit\": \"C\",\n    \"humidity\": 82.5,\n    \"battery_level\": 74.2,\n    \"location\": \"floor-1\",\n    \"status\": \"HIGH_ANOMALY\",\n    \"received_at\": \"2024-06-11T14:22:05Z\",\n    \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n    \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n    \"image_url\": \"gs://device_readings_image/red_alert.jpeg\"\n  }\n```\n\nThe sensor data indicates a high temperature anomaly. The temperature is 98.7C, humidity is 82.5, and battery level is 74.2. The machine ID is HVAC-SN004 and it is located on floor-1. The status is HIGH_ANOMALY.\n\nFirst, I will fetch anomaly insights for the machine using the `anomaly_insights` tool.\n\n"
+                  }
+                ]
+              ],
+              [
+                "notification_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "No anomaly was found for machine ID HVAC-SN004. Therefore, no action is required at this time.\n"
+                  }
+                ]
+              ],
+              [
+                "prediction_maintainence_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "OK. There are no historical anomalies reported for HVAC-SN004. I will now retrieve additional information regarding general historical sensor data, maintenance logs, and equipment specifications using the RAG agent.\n"
+                  }
+                ]
+              ],
+              [
+                "anomaly_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "I was not able to retrieve anomaly insights. I will proceed with the information I have.\nThe sensor data indicates a high temperature anomaly. The temperature is 98.7C, which is significantly high, and the status is HIGH_ANOMALY. The RAG_AGENT analysis indicated that high temperature is Anomaly ID FURN-T-001, a high severity condition that indicates a critical failure in the heating control system. Potential causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller.\n\nI will now insert the anomaly data into the `machine_anomalies` table.\n\n"
+                  }
+                ]
+              ]
+            ]
+          },
+          "creation_timestamp": 1750349023.708668
+        }
+      ],
+      "session_input": {
+        "app_name": "machine_sensors_ai_agents",
+        "user_id": "user",
+        "state": {}
+      },
+      "creation_timestamp": 1750349095.1892457
+    },
+    {
+      "eval_id": "case57b181",
+      "conversation": [
+        {
+          "invocation_id": "e-9736f322-6981-4b5f-808f-bdad2af07517",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "\"machine_id\": \"HVAC-SN004\",\n  \"time_series_id\": \"sensor-02\",\n  \"timestamp\": \"2024-06-11T14:22:00Z\",\n  \"target_value\": 98.7,\n  \"temperature_unit\": \"C\",\n  \"humidity\": 82.5,\n  \"battery_level\": 74.2,\n  \"location\": \"floor-1\",\n  \"status\": \"HIGH_ANOMALY\",\n  \"received_at\": \"2024-06-11T14:22:05Z\",\n  \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n  \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n  \"image_url\": \"gs://device_readings_image/red_alert.jpeg\""
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_call": null,
+                "function_response": null,
+                "text": "**Anomaly Report**\n\n*   **Anomaly Type:** High Temperature Excursion\n*   **Affected Sensor(s):** Temperature Sensor (sensor-02)\n*   **Timestamp:** 2024-06-11T14:22:00Z\n*   **Current Value(s):** 98.7C\n*   **Expected Range/Baseline:** Unknown (RAG_AGENT indicated that high temperature is abnormal)\n*   **Severity:** Critical\n*   **Potential Cause (if inferable):** Possible welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller.\n*   **Recommended Action (if applicable):** Initiate a controlled shutdown of the furnace and perform a maintenance check.\n\nI have inserted the anomaly data into the `machine_anomalies` table.\n"
+              }
+            ],
+            "role": null
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": "adk-a00684fb-147b-49e3-8d58-569df3e406e3",
+                "args": {
+                  "agent_name": "monitoring_agent"
+                },
+                "name": "transfer_to_agent"
+              },
+              {
+                "id": "adk-5b9193dd-eab5-4705-b1df-a4ec6bc29ef4",
+                "args": {
+                  "request": "What is the status of a sensor with the following readings: temperature=98.7C, humidity=82.5, battery level=74.2? The sensor is located on floor-1 and its machine ID is HVAC-SN004. The image associated with the sensor shows a red warning light, and the image description mentions a critically high temperature reading."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-b83ec119-9946-435a-b9e6-6a495134205d",
+                "args": {
+                  "time_series_id": "sensor-02",
+                  "battery_level": 74.2,
+                  "target_value": 98.7,
+                  "status": "ANOMALY: Based on the information provided, the sensor is reporting a critically high temperature reading. The image associated with the sensor shows a red warning light, which corroborates this. High temperature is Anomaly ID FURN-T-001, a high severity condition that indicates a critical failure in the heating control system. Potential causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller. Immediate action should be taken, such as performing a controlled shutdown of the furnace.",
+                  "machine_id": "HVAC-SN004",
+                  "timestamp": "2024-06-11T14:22:00Z",
+                  "location": "floor-1",
+                  "image_url": "gs://device_readings_image/red_alert.jpeg",
+                  "humidity": 82.5,
+                  "received_at": "2024-06-11T14:22:05Z",
+                  "temperature_unit": "C",
+                  "metadata": "{\"firmware_version\": \"v1.2.3\", \"sensor_type\": \"BME280\"}",
+                  "image_desc_generation_output": "Red warning light is on, temperature reading is critically high."
+                },
+                "name": "insert_device_reading_tool"
+              },
+              {
+                "id": "adk-7ce8ea35-2b21-4b09-9f9d-b308731fd736",
+                "args": {
+                  "machine_id": "HVAC-SN004"
+                },
+                "name": "fetch-machine-anomaly"
+              },
+              {
+                "id": "adk-f4d99ad9-31ae-4679-b180-0368ffab7a1f",
+                "args": {
+                  "machine_id": "HVAC-SN004"
+                },
+                "name": "fetch-machine-anomaly"
+              },
+              {
+                "id": "adk-1fc085d5-5599-4644-ac82-5634976849e4",
+                "args": {
+                  "machine_id": "HVAC-SN004"
+                },
+                "name": "anomaly_insights"
+              },
+              {
+                "id": "adk-da888800-c883-4215-a6fe-8ff5f4b30b49",
+                "args": {
+                  "request": "Retrieve maintenance logs and service history for HVAC-SN004."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-ae5111c0-3f15-4a63-ae4a-80e466693f7e",
+                "args": {
+                  "request": "Retrieve equipment specifications and operational manual for HVAC-SN004."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-6d0f7563-cbcc-4e9f-881a-70b8f8c06cb2",
+                "args": {
+                  "request": "Retrieve historical sensor data for HVAC-SN004, sensor-02, focusing on temperature trends over the past month."
+                },
+                "name": "rag_agent"
+              },
+              {
+                "id": "adk-015c9f0c-7ca8-43aa-bb0e-de8649037d7e",
+                "args": {
+                  "time_window_start": "2024-06-11T14:22:00Z",
+                  "avg_humidity": 82.5,
+                  "machine_id": "HVAC-SN004",
+                  "avg_battery_level": 74.2,
+                  "description": "High Temperature Excursion detected. Temperature: 98.7C. Possible causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller. Immediate action should be taken, such as performing a controlled shutdown of the furnace.",
+                  "location": "floor-1",
+                  "anomaly_status": "Critical: High Temperature Excursion",
+                  "avg_temp": 98.7
+                },
+                "name": "insert-machine-anomaly"
+              }
+            ],
+            "intermediate_responses": [
+              [
+                "image_desc_generation_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "```json\n{\n  \"original_input_payload\": {\n    \"machine_id\": \"HVAC-SN004\",\n    \"time_series_id\": \"sensor-02\",\n    \"timestamp\": \"2024-06-11T14:22:00Z\",\n    \"target_value\": 98.7,\n    \"temperature_unit\": \"C\",\n    \"humidity\": 82.5,\n    \"battery_level\": 74.2,\n    \"location\": \"floor-1\",\n    \"status\": \"HIGH_ANOMALY\",\n    \"received_at\": \"2024-06-11T14:22:05Z\",\n    \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n    \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n    \"image_url\": \"gs://device_readings_image/red_alert.jpeg\"\n  },\n  \"image_desc_generation_output\": \"The image shows a close-up of a circular indicator light, glowing intensely red, set into a plain, light-colored surface. The light originates from a central point and reflects off dark, segmented internal components, all framed by a translucent outer ring.\"\n}\n```"
+                  }
+                ]
+              ],
+              [
+                "data_import_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "```json\n{\n  \"original_input_payload\": {\n    \"machine_id\": \"HVAC-SN004\",\n    \"time_series_id\": \"sensor-02\",\n    \"timestamp\": \"2024-06-11T14:22:00Z\",\n    \"target_value\": 98.7,\n    \"temperature_unit\": \"C\",\n    \"humidity\": 82.5,\n    \"battery_level\": 74.2,\n    \"location\": \"floor-1\",\n    \"status\": \"ANOMALY: Based on the information provided, the sensor is reporting a critically high temperature reading. The image associated with the sensor shows a red warning light, which corroborates this. High temperature is Anomaly ID FURN-T-001, a high severity condition that indicates a critical failure in the heating control system. Potential causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller. Immediate action should be taken, such as performing a controlled shutdown of the furnace.\",\n    \"received_at\": \"2024-06-11T14:22:05Z\",\n    \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n    \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n    \"image_url\": \"gs://device_readings_image/red_alert.jpeg\"\n  },\n  \"image_desc_generation_output\": \"The image shows a close-up of a circular indicator light, glowing intensely red, set into a plain, light-colored surface. The light originates from a central point and reflects off dark, segmented internal components, all framed by a translucent outer ring.\"\n}\n```\n\n"
+                  }
+                ]
+              ],
+              [
+                "data_import_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "The data was successfully inserted into BigQuery.\n"
+                  }
+                ]
+              ],
+              [
+                "notification_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "Okay, I will create a Jira ticket for the high anomaly detected on machine HVAC-SN004.\n\n"
+                  }
+                ]
+              ],
+              [
+                "prediction_maintainence_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "Okay, I will now perform a predictive maintenance analysis based on the provided information.\n\n**Step 1: Gather Historical Context**\n\nFirst, I need to retrieve historical anomaly data for the identified machine: HVAC-SN004.\n"
+                  }
+                ]
+              ],
+              [
+                "anomaly_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "OK. I will analyze the sensor data for anomalies.\n\n```json\n{\n    \"machine_id\": \"HVAC-SN004\",\n    \"time_series_id\": \"sensor-02\",\n    \"timestamp\": \"2024-06-11T14:22:00Z\",\n    \"target_value\": 98.7,\n    \"temperature_unit\": \"C\",\n    \"humidity\": 82.5,\n    \"battery_level\": 74.2,\n    \"location\": \"floor-1\",\n    \"status\": \"HIGH_ANOMALY\",\n    \"received_at\": \"2024-06-11T14:22:05Z\",\n    \"metadata\": \"{\\\"firmware_version\\\": \\\"v1.2.3\\\", \\\"sensor_type\\\": \\\"BME280\\\"}\",\n    \"image_desc_generation_output\": \"Red warning light is on, temperature reading is critically high.\",\n    \"image_url\": \"gs://device_readings_image/red_alert.jpeg\"\n  }\n```\n\nThe sensor data indicates a high temperature anomaly. The temperature is 98.7C, humidity is 82.5, and battery level is 74.2. The machine ID is HVAC-SN004 and it is located on floor-1. The status is HIGH_ANOMALY.\n\nFirst, I will fetch anomaly insights for the machine using the `anomaly_insights` tool.\n\n"
+                  }
+                ]
+              ],
+              [
+                "notification_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "No anomaly was found for machine ID HVAC-SN004. Therefore, no action is required at this time.\n"
+                  }
+                ]
+              ],
+              [
+                "prediction_maintainence_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "OK. There are no historical anomalies reported for HVAC-SN004. I will now retrieve additional information regarding general historical sensor data, maintenance logs, and equipment specifications using the RAG agent.\n"
+                  }
+                ]
+              ],
+              [
+                "anomaly_agent",
+                [
+                  {
+                    "video_metadata": null,
+                    "thought": null,
+                    "inline_data": null,
+                    "file_data": null,
+                    "thought_signature": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "text": "I was not able to retrieve anomaly insights. I will proceed with the information I have.\nThe sensor data indicates a high temperature anomaly. The temperature is 98.7C, which is significantly high, and the status is HIGH_ANOMALY. The RAG_AGENT analysis indicated that high temperature is Anomaly ID FURN-T-001, a high severity condition that indicates a critical failure in the heating control system. Potential causes include a welded/stuck heating element relay or contactor, a faulty thermocouple, or a malfunctioning temperature controller.\n\nI will now insert the anomaly data into the `machine_anomalies` table.\n\n"
+                  }
+                ]
+              ]
+            ]
+          },
+          "creation_timestamp": 1750349023.708668
+        }
+      ],
+      "session_input": {
+        "app_name": "machine_sensors_ai_agents",
+        "user_id": "user",
+        "state": {}
+      },
+      "creation_timestamp": 1750349102.3748164
+    }
+  ],
+  "creation_timestamp": 1750349080.9359133
+}

@@ -289,8 +289,8 @@ See It In Action:
 Watch as our system detects an anomaly, suggests a self-healing action, and provides real-time XR guidance to a technician, while SOC analysts receive proactive notifications and incident coordination.
 
 # What’s Next: Our Vision
-Deeper integration with legacy industrial systems
-Expanded XR/VR capabilities for remote collaboration
-Continuous learning from incident data to improve agent intelligence
+- Deeper integration with legacy industrial systems
+- Expanded XR/VR capabilities for remote collaboration
+- Continuous learning from incident data to improve agent intelligence
 
 # Contributors

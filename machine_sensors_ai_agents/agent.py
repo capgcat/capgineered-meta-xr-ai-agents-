@@ -16,7 +16,7 @@ detection_agent = ParallelAgent(
         'It also uses the prediction maintenance agent to forecast potential equipment failures and recommend proactive maintenance. '
         'Finally, it uses the notification agent to send alerts and notifications to relevant stakeholders'
     ),
-    sub_agents=[anomaly_agent, prediction_maintainence_agent, notification_agent],
+    sub_agents=[anomaly_agent, prediction_maintainence_agent],
 )
 
 

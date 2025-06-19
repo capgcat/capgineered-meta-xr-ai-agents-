@@ -2,8 +2,9 @@ from google.adk.agents import Agent
 from .prompt import NOTIFICATION_AGENT_INSTRUCTION
 from google.adk.tools.tool_context import ToolContext
 from typing import Optional, List, Dict
-from .tools import toolbox_tools
-
+from .tools import toolbox_tools, publishDeviceNotification, createIncidentBridge
+from machine_sensors_ai_agents.sub_agents.rag_agent.agent import rag_agent
+from google.adk.tools.agent_tool import AgentTool
 from jira import JIRA
 from dotenv import load_dotenv
 import os
@@ -87,5 +88,5 @@ notification_agent = Agent(
     model="gemini-2.0-flash",
     description="Provides step-by-step assistance and diagnostic guidance to technicians for resolving machine issues based on predicted maintenance needs and detected anomalies.",
     instruction=NOTIFICATION_AGENT_INSTRUCTION,   
-    tools=[*toolbox_tools, create_jira_ticket]
+    tools=[*toolbox_tools, create_jira_ticket, publishDeviceNotification, createIncidentBridge, AgentTool(agent=rag_agent),] 
 )

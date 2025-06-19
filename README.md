@@ -111,6 +111,50 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 
 ![image](https://github.com/user-attachments/assets/520a1913-0af9-4f82-b4ff-332b090beb59)
 
+# Relevant Metrics
+## AI System Performance:
+![image](https://github.com/user-attachments/assets/d0d38901-b5ee-4c0e-8bfb-febb25f9ec52)
+### Anomaly Detection:
+- **Accuracy, Precision, Recall, F1 Score:** For identifying true anomalies vs. false positives/negatives.
+Detection Latency: Time from anomaly occurrence to detection/alert.
+### Predictive Maintenance:
+- **Prediction Accuracy:** Correctly forecasting failures before they occur.
+- **Lead Time:** Average time between prediction and actual failure.
+### Guidance Effectiveness:
+- **Task Completion Rate:** % of repairs completed successfully using AR guidance.
+- **Error Reduction:** Decrease in maintenance errors post-implementation.
+- **Time-to-Resolution:** Average time to resolve issues vs. baseline.
+## Operational Metrics:
+
+- **Downtime Reduction:** % decrease in unplanned downtime.
+- **Mean Time to Repair (MTTR):** Improvement over traditional methods.
+- **User Adoption Rate:** % of technicians using the system regularly.
+- **Notification Response Time:** Time from alert to technician acknowledgment.
+## Cost Structure & Revenue Model:
+
+### Cost Structure:
+- Cloud compute and storage (AI inference, data logs).
+- AR headset hardware (Meta Quest 3).
+- Integration and support.
+### Revenue Model:
+- SaaS subscription per site or per device.
+- Tiered pricing based on feature set (basic monitoring vs. full AR guidance).
+- Optional professional services for integration and training.
+## KPIs:
+Reduction in downtime and maintenance costs.
+Increase in first-time fix rate.
+Technician training time reduction.
+Compliance with safety protocols.
+
+# Execution Plan
+**Deployment & Distribution:**
+- **Jira Web Dashboard:********** For managers to view real-time machine health, alerts, and maintenance analytics.
+- **Mobile App:******** For technicians to receive notifications and access manuals on the go.
+- **Meta Quest 3 AR App:****** For immersive, hands-free repair guidance at the machine.
+- **Direct API:**** For integration with existing enterprise asset management (EAM) or CMMS systems.
+- **Jira Integration:** Automated ticket creation and status tracking for maintenance events.
+
+
 # Data Ingestion & Flow
 ![Alt text](https://github.com/user-attachments/assets/7decd02c-287c-4da0-9d7c-aaf2cfeba928)
 ![Alt text](https://github.com/user-attachments/assets/84053662-4f1a-4925-aec5-2fdd797618cb)

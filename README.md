@@ -8,7 +8,7 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 🤖 [Solution and Technical Components](#our-solution-the-agentic-safety-platform)
 🚀 [Meet the AI Agents](#meet-the-ai-agents)  
 📱 [Relevant Metrics](#relevant-metrics)
-🌐 [Execution Plan](#execution-agents)   
+🌐[Execution Plan](#execution-plan)   
 🧭 [Data Ingestion & Flow](#data-ingestion--flow)
 🛠️ [Under the Hood: Our Technology Stack](#technology-stack)  
 💻 [Project Structure](#exploring-the-codebase)  

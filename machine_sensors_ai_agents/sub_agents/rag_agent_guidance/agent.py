@@ -27,7 +27,7 @@ ask_vertex_retrieval = VertexAiRagRetrieval(
 )
 
 rag_agent_guidance = Agent(
-    model='gemini-2.0-flash-001',
+    model="gemini-2.5-pro",
     name='rag_agent',
     instruction=return_instructions_root(),
     tools=[

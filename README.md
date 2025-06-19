@@ -115,22 +115,21 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 # Relevant Metrics
 ## AI System Performance:
 ![image](https://github.com/user-attachments/assets/d0d38901-b5ee-4c0e-8bfb-febb25f9ec52)
-### Anomaly Detection:
-- **Accuracy, Precision, Recall, F1 Score:** For identifying true anomalies vs. false positives/negatives.
-Detection Latency: Time from anomaly occurrence to detection/alert.
-### Predictive Maintenance:
-- **Prediction Accuracy:** Correctly forecasting failures before they occur.
-- **Lead Time:** Average time between prediction and actual failure.
-### Guidance Effectiveness:
-- **Task Completion Rate:** % of repairs completed successfully using AR guidance.
-- **Error Reduction:** Decrease in maintenance errors post-implementation.
-- **Time-to-Resolution:** Average time to resolve issues vs. baseline.
-## Operational Metrics:
+### Anomaly Detection(Planned Evaluation):
+- **Accuracy, Precision, Recall, F1 Score:** Will be used to assess the system’s ability to correctly identify true anomalies versus false positives/negatives once data is available.
+- **Detection Latency:** Targeting rapid detection, measured as the time from anomaly occurrence to alert generation. Evaluation metrics may include tool trajectory average score and response match score.
+### Predictive Maintenance(Planned Evaluation):
+- **Prediction Accuracy:** The system will be evaluated on its ability to forecast equipment failures before they occur, minimizing unplanned downtime.
+### Guidance Effectiveness(Projected Impact):
+- **Task Completion Rate:** Aim for at least 15% of repairs to be completed successfully using AR guidance, especially by less experienced technicians.
+- **Error Reduction:** Expect a measurable decrease in maintenance errors after implementation.
+- **Time-to-Resolution:** Targeting a reduction in average repair time compared to current baseline processes.
+## Operational Metrics(Anticipated Outcomes):
 
-- **Downtime Reduction:** % decrease in unplanned downtime.
-- **Mean Time to Repair (MTTR):** Improvement over traditional methods.
-- **User Adoption Rate:** % of technicians using the system regularly.
-- **Notification Response Time:** Time from alert to technician acknowledgment.
+- **Downtime Reduction:** Percentage decrease in unplanned downtime across monitored equipment.
+- **Mean Time to Repair (MTTR):** Improvement in repair speed over traditional maintenance methods.
+- **User Adoption Rate:** Percentage of technicians regularly utilizing the system.
+- **Notification Response Time:** Time from alert issuance to technician acknowledgment.
 ## Cost Structure & Revenue Model:
 
 ### Cost Structure:
@@ -142,10 +141,10 @@ Detection Latency: Time from anomaly occurrence to detection/alert.
 - Tiered pricing based on feature set (basic monitoring vs. full AR guidance).
 - Optional professional services for integration and training.
 ## KPIs:
-Reduction in downtime and maintenance costs.
-Increase in first-time fix rate.
-Technician training time reduction.
-Compliance with safety protocols.
+- Reduction in downtime and maintenance costs.
+- Increase in first-time fix rate.
+- Technician training time reduction.
+- Compliance with safety protocols.
 
 # Execution Plan
 **Deployment & Distribution:**

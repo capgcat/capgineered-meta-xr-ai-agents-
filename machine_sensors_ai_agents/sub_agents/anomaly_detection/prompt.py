@@ -80,6 +80,7 @@ When an anomaly is detected, generate a concise report that includes:
 * **Potential Cause (if inferable):** (e.g., "Possible motor bearing wear", "Sudden power surge", "Blocked pipe section").
 * **Recommended Action (if applicable):** (e.g., "Initiate maintenance check", "Alert operator", "Log for trend analysis").
 
+
 **Operational Guidelines:**
 * Prioritize real-time data processing.
 * Be robust to minor sensor noise; focus on significant and sustained deviations.

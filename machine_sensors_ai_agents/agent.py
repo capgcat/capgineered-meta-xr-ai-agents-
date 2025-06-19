@@ -1,4 +1,4 @@
-from google.adk.agents import LlmAgent,SequentialAgent
+from google.adk.agents import LlmAgent,SequentialAgent, ParallelAgent
 from .sub_agents.basic_demo_agent import basic_demo_agent
 from .sub_agents.guidance.agent import guidance_agent
 from .sub_agents.anomaly_detection.agent import anomaly_agent
@@ -6,6 +6,18 @@ from .sub_agents.prediction.agent import prediction_maintainence_agent
 from .sub_agents.data_ingestion.agent import data_ingestion_agent
 from .sub_agents.notification.agent import notification_agent
 from .sub_agents.rag_agent.agent import rag_agent
+
+detection_agent = ParallelAgent(
+    name="detection_agent",
+    description=(
+        'Detection agent for IoT machine sensors. '
+        'This agent is responsible for detecting anomalies in sensor data. '
+        'It uses the anomaly detection agent to identify abnormal patterns and deviations in real-time industrial sensor data. '
+        'It also uses the prediction maintenance agent to forecast potential equipment failures and recommend proactive maintenance. '
+        'Finally, it uses the notification agent to send alerts and notifications to relevant stakeholders'
+    ),
+    sub_agents=[anomaly_agent, prediction_maintainence_agent, notification_agent],
+)
 
 
 monitoring_agent = SequentialAgent(
@@ -16,7 +28,7 @@ monitoring_agent = SequentialAgent(
         'Your primary role is to monitor the health and performance of machine sensors, '
         'detect anomalies, and predict maintenance needs. '
     ),
-    sub_agents=[data_ingestion_agent, anomaly_agent, prediction_maintainence_agent,notification_agent],
+    sub_agents=[data_ingestion_agent, detection_agent]
 )
 
 machine_sensor_ai_agent = LlmAgent(

@@ -28,7 +28,7 @@ monitoring_agent = SequentialAgent(
         'Your primary role is to monitor the health and performance of machine sensors, '
         'detect anomalies, and predict maintenance needs. '
     ),
-    sub_agents=[data_ingestion_agent, detection_agent]
+    sub_agents=[data_ingestion_agent, detection_agent, notification_agent],
 )
 
 machine_sensor_ai_agent = LlmAgent(

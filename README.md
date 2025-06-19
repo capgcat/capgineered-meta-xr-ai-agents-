@@ -109,7 +109,8 @@ An AI assistant that provides accurate and concise answers to questions by retri
 - **RAG Agent for Guidance (rag_agent_guidance)**
 Similar to the general RAG Agent, but this one is specifically configured to retrieve information from a RAG corpus dedicated to maintenance guidance, repair instructions, schematics, and technical documentation to support the guidance_agent. 
 
-![image](https://github.com/user-attachments/assets/520a1913-0af9-4f82-b4ff-332b090beb59)
+![image](https://github.com/user-attachments/assets/61d5eced-8943-44e5-879c-6ce9d865aca1)
+
 
 # Relevant Metrics
 ## AI System Performance:

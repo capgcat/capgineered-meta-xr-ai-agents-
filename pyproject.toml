@@ -3,9 +3,8 @@ name = "machine_sensors_ai_agents"
 version = "0.1.0"
 description = "This AI Agent finds anomalies in machines based on data provided by machine sensors, predicts which machines might need maintenance, and provides guidance to technicians on fixing them."
 authors = [
-    {name = "Sandeep Kudterkar", email = "sandeep.Kudterkar@capgemini.com"},
+    {name = "Shokin Dhakad", email = "shokin.dhakadr@capgemini.com"},
     {name = "Catherine Balajadia", email = "catherine.balajadia@capgemini.com"},
-    {name = "Tushar Sabale", email = "tushar.sabale@capgemini.com"},
 ]
 readme = "README.md"
 license = "Apache License 2.0"

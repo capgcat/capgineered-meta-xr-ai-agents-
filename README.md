@@ -99,7 +99,7 @@ An expert image analysis assistant. Its primary task is to describe images provi
 
 - **Notification Agent (notification_agent)**
 Monitors machine anomalies and is responsible for creating Jira tickets for detected issues. It ensures tickets are correctly assigned and escalated based on predefined business rules and the severity of the anomaly, and can use a RAG agent for context.
-
+![Alt text](https://github.com/user-attachments/assets/4f702489-a63d-41ae-821b-d6f2eb64d5c7)
 - **Prediction Maintenance Agent (prediction_maintainence_agent)**
 Analyzes anomaly alerts and historical data to forecast potential equipment failures. It recommends proactive maintenance actions, utilizing a RAG agent for broader contextual information and historical data, and can trigger notifications.
 
@@ -149,10 +149,11 @@ Compliance with safety protocols.
 # Execution Plan
 **Deployment & Distribution:**
 - **Jira Web Dashboard:********** For managers to view real-time machine health, alerts, and maintenance analytics.
-- **Mobile App:******** For technicians to receive notifications and access manuals on the go.
-- **Meta Quest 3 AR App:****** For immersive, hands-free repair guidance at the machine.
-- **Direct API:**** For integration with existing enterprise asset management (EAM) or CMMS systems.
 - **Jira Integration:** Automated ticket creation and status tracking for maintenance events.
+![Alt text](https://github.com/user-attachments/assets/402cdd33-da66-4b31-b780-b48ecc00ae4c)
+- **Meta Quest 3 AR App:****** For immersive, hands-free repair guidance at the machine.
+
+
 
 
 # Data Ingestion & Flow

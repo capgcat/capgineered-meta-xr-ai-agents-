@@ -52,7 +52,7 @@ Our AI-driven platform orchestrates a suite of specialized agents to deliver end
 GuideXR delivers immersive, step-by-step XR/VR guidance to technicians, accelerating repairs and reducing errors.
 
 # Solution Architecture
-![Alt text](https://github.com/user-attachments/assets/72ac236c-8f63-4e8d-8495-51fc95e45ba2)
+![image](https://github.com/user-attachments/assets/520a1913-0af9-4f82-b4ff-332b090beb59)
 - **IoT Sensors → DataSage → RAG/Vector Store → Anomalyze/Predicta/AutoTune** 
 - GuideXR & InsightOps interface with users via XR/VR and web dashboards
 - Incident Management is orchestrated with automated SME coordination

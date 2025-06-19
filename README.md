@@ -21,7 +21,7 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 # Problem Statement and Target Users
 ## Problem Statement:
 Industrial operations depend on complex, high-value machinery where unplanned downtime, slow repairs, or incorrect maintenance can cause significant financial losses, safety risks, and productivity drops. Traditional maintenance is often reactive, siloed, and lacks real-time intelligence, leading to delayed fault detection, inefficient troubleshooting, and increased risk of human error—especially for less experienced technicians.
-- Despite significant investments in safety manuals, operational guidelines, and audits, critical information remains fragmented and inconsistently applied. This leads to:
+Despite significant investments in safety manuals, operational guidelines, and audits, critical information remains fragmented and inconsistently applied. This leads to:
 - Inefficient monitoring and delayed anomaly detection
 - Prolonged incident resolution
 - Increased risk and unplanned downtime
@@ -40,7 +40,7 @@ Industrial operations depend on complex, high-value machinery where unplanned do
 ## Overview:
 The solution is a GenAI-powered, agentic mixed reality maintenance system that integrates IoT sensor data, cloud-based AI, and Meta Quest 3 AR headsets. It delivers real-time anomaly detection, predictive maintenance, prioritized notifications, and immersive AR-guided repair procedures.
 ## Solution Architecture
-![image](https://github.com/user-attachments/assets/520a1913-0af9-4f82-b4ff-332b090beb59)
+![image](https://github.com/user-attachments/assets/5d3d95a5-3265-4401-bc46-0b390edcd7af)
 
 ## Key Features:
 

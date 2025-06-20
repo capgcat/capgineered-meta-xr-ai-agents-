@@ -40,7 +40,7 @@ Despite significant investments in safety manuals, operational guidelines, and a
 ## Overview:
 The solution is a GenAI-powered, agentic mixed reality maintenance system that integrates IoT sensor data, cloud-based AI, and Meta Quest 3 AR headsets. It delivers real-time anomaly detection, predictive maintenance, prioritized notifications, and immersive AR-guided repair procedures.
 ## Solution Architecture
-![image](https://github.com/user-attachments/assets/5d3d95a5-3265-4401-bc46-0b390edcd7af)
+![image](https://github.com/user-attachments/assets/a7117881-a8da-49eb-bef1-407796303870)
 
 ## Key Features:
 
@@ -157,7 +157,7 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 - Integrated technician management with live status, location, and expertise tracking.
 - Step-by-step AR-guided repair instructions delivered directly to Meta Quest 3 headsets.
 - Comprehensive analytics and compliance tools to maximize uptime and ensure on-site safety.
-![Alt text](https://github.com/user-attachments/assets/9c429744-376a-49e6-8be3-20e6b099a5d8)
+![Alt text](https://github.com/user-attachments/assets/423c5618-9f37-4ae7-81df-27bcd4a4ffed)
 - **Meta Quest 3 AR App:****** For immersive, hands-free repair guidance at the machine.
 
 

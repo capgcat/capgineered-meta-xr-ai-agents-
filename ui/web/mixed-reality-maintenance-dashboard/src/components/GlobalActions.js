@@ -21,9 +21,7 @@ export default function GlobalActions() {
       {/* Floating Action Buttons Container */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-row gap-3 items-center">
         {/* Voice Query Button */}
-        <div>
-          <VoiceQueryButton />
-        </div>
+       
         
         {/* Show All Tasks Button - Only visible when tasks are filtered */}
         {isFiltered && (

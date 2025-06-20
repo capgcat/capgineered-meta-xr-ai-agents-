@@ -151,6 +151,13 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 - **Jira Web Dashboard:********** For managers to view real-time machine health, alerts, and maintenance analytics.
 - **Jira Integration:** Automated ticket creation and status tracking for maintenance events.
 ![Alt text](https://github.com/user-attachments/assets/402cdd33-da66-4b31-b780-b48ecc00ae4c)
+- **B5META Mixed Reality Maintenance Dashboard:** 
+- Real-time monitoring of industrial equipment health using IoT sensor data and AI-driven anomaly detection.
+- Prioritized maintenance alerts and task assignments ensure rapid response to critical issues.
+- Integrated technician management with live status, location, and expertise tracking.
+- Step-by-step AR-guided repair instructions delivered directly to Meta Quest 3 headsets.
+- Comprehensive analytics and compliance tools to maximize uptime and ensure on-site safety.
+![Alt text](https://github.com/user-attachments/assets/402cdd33-da66-4b31-b780-b48ecc00ae4c)
 - **Meta Quest 3 AR App:****** For immersive, hands-free repair guidance at the machine.
 
 

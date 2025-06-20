@@ -1,4 +1,4 @@
-![Alt text](https://github.com/user-attachments/assets/3c785ed9-c064-4b39-8c1d-534b0d388c22)
+![Alt text](https://github.com/user-attachments/assets/9be3f842-e963-49a2-a2bf-0dd7cb3a39cb)
 
 # Industrial AI Safety Suite: Intelligent Guidance for Safer Operations
 Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform designed to transform industrial safety and operational reliability. Our system leverages IoT monitoring, immersive XR/VR guidance, and centralized knowledge (RAG/Vector Store) to empower both technicians and SOC analysts, making industrial environments safer, smarter, and more efficient.
@@ -157,7 +157,7 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 - Integrated technician management with live status, location, and expertise tracking.
 - Step-by-step AR-guided repair instructions delivered directly to Meta Quest 3 headsets.
 - Comprehensive analytics and compliance tools to maximize uptime and ensure on-site safety.
-![Alt text](https://github.com/user-attachments/assets/402cdd33-da66-4b31-b780-b48ecc00ae4c)
+![Alt text](https://github.com/user-attachments/assets/9c429744-376a-49e6-8be3-20e6b099a5d8)
 - **Meta Quest 3 AR App:****** For immersive, hands-free repair guidance at the machine.
 
 

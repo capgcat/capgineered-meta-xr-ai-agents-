@@ -7,6 +7,7 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 🔍 [Problem Statement and Target Users](#problem-statement-and-target-users)  
 🤖 [Solution and Technical Components](#solution-and-technical-components)  
 🚀 [Meet the AI Agents](#meet-the-ai-agents)  
+👓 [Mixed Reality Guidance on Meta Headset ](#mixed-reality-guidance-on-meta-headset)   
 📱 [Relevant Metrics](#relevant-metrics)  
 🌐 [Execution Plan](#execution-plan)  
 🧭 [Data Ingestion & Flow](#data-ingestion--flow)  
@@ -111,6 +112,7 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 
 ![image](https://github.com/user-attachments/assets/61d5eced-8943-44e5-879c-6ce9d865aca1)
 
+# Mixed Reality Guidance on Meta Headset 
 
 # Relevant Metrics
 ## AI System Performance:

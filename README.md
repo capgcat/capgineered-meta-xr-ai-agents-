@@ -113,6 +113,7 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 ![image](https://github.com/user-attachments/assets/61d5eced-8943-44e5-879c-6ce9d865aca1)
 
 # Mixed Reality Guidance on Meta Headset 
+![image](https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/1dc64973711202b56133bceadd3b653af9bab884/images/MixedReality.jpg)
 
 # Relevant Metrics
 ## AI System Performance:

@@ -114,6 +114,20 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 
 # Mixed Reality Guidance on Meta Headset 
 ![image](https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/1dc64973711202b56133bceadd3b653af9bab884/images/MixedReality.jpg)
+- All Mixed Reality panels and their functionalities are powered by integrated AI agents, driving intelligent data processing and real-time guidance.
+- A cutting-edge Mixed Reality application designed to provide real-time engineer guidance for machine maintenance and repair.
+- Leverages anomaly detection and predictive insights from our specialized anomaly and prediction AI agents to generate context-aware, actionable troubleshooting steps.
+- Features a prominent central holographic panel ("Welcome to Cappgineered Guidance Agent") that:
+- Includes a search bar for quick navigation,
+- Delivers dynamic, step-by-step repair instructions (e.g., "Troubleshooting: Actuator," "Troubleshooting: Motor") provided by an intelligent guidance agent,
+- Highlights "Essential Machine Modules" with distinct icons, allowing for quick access to component-specific information.
+- Includes a left holographic panel ("Machine Configuration & Diagnostics & Sensor Controls") for system management:
+- Machine Configuration: Allows selection/enabling of system types like Electrical, Hydraulic, Pneumatic, Calibration, High Frequency, Energy Management, and Audit.
+- Diagnostics & Sensor Controls: Provides options for viewing Anomalies and Report Logs.
+- Displays a right holographic panel ("Machine Parameter Set") showing critical, adjustable machine parameters with sliders and value displays for Vibration Amplitude (mm/s), Coolant Temperature (°C), Air Pressure (psi), Spindle Speed (RPM), Sensor Noise Level (dB), Voltage Fluctuation, Signal-to-Noise Ratio.
+- Enables interactive adjustment of parameters using intuitive sliders displayed holographically in the engineer's field of view.
+- Offers specific guidance for common machine components, such as actuators, motors, valves, gears, and bearings, directly tied to sensor warnings and diagnostic information.
+- Integrates Thermal Control System data and supports a Predictive Maintenance Mode for proactive issue resolution, enhancing overall machine uptime.
 
 # Relevant Metrics
 ## AI System Performance:

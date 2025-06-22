@@ -261,7 +261,7 @@ toolsets:
   guidance-toolset:
     - fetch-device-info
   predictions-toolset: 
-    - prediction-insights 
+    - prediction_insights
     - insert-machine-anomaly
     - fetch-machine-anomaly
   notifications-toolset: 

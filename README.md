@@ -5,14 +5,14 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 
 # 🌍 Explore the Project : Click below to navigate
 🔍 [Problem Statement and Target Users](#problem-statement-and-target-users)  
-🤖 [Solution and Technical Components](#solution-and-technical-components
-🚀 [Meet the AI Agents](#meet-the-ai-agents)
+🤖 [Solution and Technical Components](#solution-and-technical-components)  
+🚀 [Meet the AI Agents](#meet-the-ai-agents)  
 📊 [Dashboard - Web & Jira](#dashboard---web--jira)  
-👓 [Mixed Reality Guidance on Meta Headset ](#mixed-reality-guidance-on-meta-headset)   
+👓 [Mixed Reality Guidance on Meta Headset](#mixed-reality-guidance-on-meta-headset)  
 📱 [Relevant Metrics](#relevant-metrics)  
-🌐 [Execution Plan](#execution-plan)
-🛠️ [Under the Hood: Our Technology Stack with Modern MCP Tools Box](#under-the-hood-our-technology-stack)  
-🧭 [Data Ingestion & Flow](#data-ingestion--flow)
+🌐 [Execution Plan](#execution-plan)  
+🛠️ [Under the Hood: Our Technology Stack with Modern MCP Tools Box](#under-the-hood-our-technology-stack-with-modern-mcp-tools-box)  
+🧭 [Data Ingestion & Flow](#data-ingestion--flow)  
 💻 [Project Structure](#project-structure)  
 🔐 [Quickstart: Project Setup Guide](#quickstart-project-setup-guide)  
 👓 [How to Run This Project on Meta Quest 3](#how-to-run-this-project-on-meta-quest-3)  

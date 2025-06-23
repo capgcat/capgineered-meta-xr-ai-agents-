@@ -187,7 +187,7 @@ It integrates AI agents to efficiently respond to user queries, such as retrievi
 - Provide comprehensive analytics and compliance tools to maximize uptime and safety.
 
 # Under the Hood: Our Technology Stack with Modern MCP Tools Box
-- Our solution harnesses a modern technology stack built around the ** Model Context Protocol (MCP)** to enable seamless, context-aware industrial maintenance.
+- Our solution harnesses a modern technology stack built around the **Model Context Protocol (MCP)** to enable seamless, context-aware industrial maintenance.
 - **Python 3.10+** (Poetry for dependency management)
 - **Google Cloud Vertex AI**(for agent deployment) 
 - **BigQuery** (for sensor data storage)

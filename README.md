@@ -5,13 +5,14 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 
 # 🌍 Explore the Project : Click below to navigate
 🔍 [Problem Statement and Target Users](#problem-statement-and-target-users)  
-🤖 [Solution and Technical Components](#solution-and-technical-components)  
-🚀 [Meet the AI Agents](#meet-the-ai-agents)  
+🤖 [Solution and Technical Components](#solution-and-technical-components)
+🚀 [Meet the AI Agents](#meet-the-ai-agents)
+📊 [Dashboard - Web & Jira](#dashboard---web--jira)  
 👓 [Mixed Reality Guidance on Meta Headset ](#mixed-reality-guidance-on-meta-headset)   
 📱 [Relevant Metrics](#relevant-metrics)  
 🌐 [Execution Plan](#execution-plan)  
 🧭 [Data Ingestion & Flow](#data-ingestion--flow)  
-🛠️ [Under the Hood: Our Technology Stack](#under-the-hood-our-technology-stack)  
+🛠️ [Under the Hood: Our Technology Stack with Modern MCP Tools Box](#under-the-hood-our-technology-stack)  
 💻 [Project Structure](#project-structure)  
 🔐 [Quickstart: Project Setup Guide](#quickstart-project-setup-guide)  
 👓 [How to Run This Project on Meta Quest 3](#how-to-run-this-project-on-meta-quest-3)  
@@ -113,6 +114,20 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 
 ![image](https://github.com/user-attachments/assets/61d5eced-8943-44e5-879c-6ce9d865aca1)
 
+# Dashboard - Web & Jira
+**Deployment & Distribution:**
+- **Jira Web Dashboard and Jira Integration:**********
+- For managers to view real-time machine health, alerts, and 
+- Automated ticket creation and status tracking for maintenance events.
+- Comprehensive analytics and compliance tools to maximize uptime and ensure on-site safety.
+![Alt text](https://github.com/user-attachments/assets/402cdd33-da66-4b31-b780-b48ecc00ae4c)
+- **B5META Mixed Reality Maintenance Dashboard:** 
+- This web-based application offers a comprehensive overview of pending tasks for the Maintenance Technicians, Operations Managers,IT/OT Administrators and Industrial Safety Officers. It highlights high-priority items to ensure a seamless process while keeping teams organized and focused on urgent tasks, thereby ensuring timely completion and accountability.
+- The app provides insights into tasks by breaking it down using multiple views for dashboard.
+It integrates AI agents to efficiently respond to user queries, such as retrieving the top pending tasks in specific areas. 
+![Alt text](https://github.com/user-attachments/assets/423c5618-9f37-4ae7-81df-27bcd4a4ffed)
+
+
 # Mixed Reality Guidance on Meta Headset 
 ![image](https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/1dc64973711202b56133bceadd3b653af9bab884/images/MixedReality.jpg)
 - All Mixed Reality panels and their functionalities are powered by integrated AI agents, driving intelligent data processing and real-time guidance.
@@ -166,20 +181,10 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 
 # Execution Plan
 **Deployment & Distribution:**
-- **Jira Web Dashboard:********** For managers to view real-time machine health, alerts, and maintenance analytics.
-- **Jira Integration:** Automated ticket creation and status tracking for maintenance events.
-![Alt text](https://github.com/user-attachments/assets/402cdd33-da66-4b31-b780-b48ecc00ae4c)
-- **B5META Mixed Reality Maintenance Dashboard:** 
-- Real-time monitoring of industrial equipment health using IoT sensor data and AI-driven anomaly detection.
-- Prioritized maintenance alerts and task assignments ensure rapid response to critical issues.
-- Integrated technician management with live status, location, and expertise tracking.
-- Step-by-step AR-guided repair instructions delivered directly to Meta Quest 3 headsets.
-- Comprehensive analytics and compliance tools to maximize uptime and ensure on-site safety.
-![Alt text](https://github.com/user-attachments/assets/423c5618-9f37-4ae7-81df-27bcd4a4ffed)
-- **Meta Quest 3 AR App:****** For immersive, hands-free repair guidance at the machine.
-
-
-
+- Deploy an integrated system combining Jira dashboards for real-time machine health monitoring, automated ticketing, and maintenance analytics. 
+- Utilize the B5META Mixed Reality Dashboard to prioritize alerts, manage technician tasks, and track expertise. Deliver immersive, step-by-step AR repair guidance via Meta Quest 3 headsets for hands-free, efficient maintenance. 
+- Ensure seamless IoT sensor data integration with AI-driven anomaly detection and predictive insights. 
+- Provide comprehensive analytics and compliance tools to maximize uptime and safety.
 
 # Data Ingestion & Flow
 ![Alt text](https://github.com/user-attachments/assets/7decd02c-287c-4da0-9d7c-aaf2cfeba928)
@@ -188,7 +193,8 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 - Centralized knowledge base for up-to-date context
 - Real-time feedback loop for anomaly detection, prediction, and guidance
 
-# Under the Hood: Our Technology Stack
+# Under the Hood: Our Technology Stack with Modern MCP Tools Box
+- Our solution harnesses a modern technology stack built around the ** Model Context Protocol (MCP)** to enable seamless, context-aware industrial maintenance.
 - **Python 3.10+** (Poetry for dependency management)
 - **Google Cloud Vertex AI**(for agent deployment) 
 - **BigQuery** (for sensor data storage)

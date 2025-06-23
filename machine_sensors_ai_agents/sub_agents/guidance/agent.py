@@ -11,9 +11,8 @@ import os
 
 # Load environment variables
 JIRA_URL="https://capgineered-agents-machine.atlassian.net/"
-EMAIL="sandeep.kudterkar@capgemini.com"
-API_TOKEN= "ATATT3xFfGF0ajAk32zbfjcL9JNu0UyRdJtzn5dwRfhKdZWVkPBbsPR7cEA8NG8d0AVUiUgdVfJ_g6uCOpfyu_0GyNPWAEtGb13s4T_eKzGo9RoC7rHI2mUX-b_RS0NBLPHkw5rLY4t0ajfHznEPY5Fj6tCEuxN-dAKkq3V6a7-mNCuruiM5GQA=CCCEF4B8"
-PROJECT_KEY="MACHINECAP"
+EMAIL=""
+API_TOKEN= ""
 def connect_to_jira() -> JIRA:
     """
     Connects to a JIRA instance using credentials from environment variables.

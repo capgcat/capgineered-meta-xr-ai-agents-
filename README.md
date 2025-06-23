@@ -354,3 +354,4 @@ Watch as our system detects an anomaly, suggests a self-healing action, and prov
 - Continuous learning from incident data to improve agent intelligence
 
 # Contributors
+The Capgineered Agents Team

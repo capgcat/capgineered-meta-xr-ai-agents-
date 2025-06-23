@@ -5,14 +5,14 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 
 # 🌍 Explore the Project : Click below to navigate
 🔍 [Problem Statement and Target Users](#problem-statement-and-target-users)  
-🤖 [Solution and Technical Components](#solution-and-technical-components)
+🤖 [Solution and Technical Components](#solution-and-technical-components
 🚀 [Meet the AI Agents](#meet-the-ai-agents)
 📊 [Dashboard - Web & Jira](#dashboard---web--jira)  
 👓 [Mixed Reality Guidance on Meta Headset ](#mixed-reality-guidance-on-meta-headset)   
 📱 [Relevant Metrics](#relevant-metrics)  
-🌐 [Execution Plan](#execution-plan)  
-🧭 [Data Ingestion & Flow](#data-ingestion--flow)  
+🌐 [Execution Plan](#execution-plan)
 🛠️ [Under the Hood: Our Technology Stack with Modern MCP Tools Box](#under-the-hood-our-technology-stack)  
+🧭 [Data Ingestion & Flow](#data-ingestion--flow)
 💻 [Project Structure](#project-structure)  
 🔐 [Quickstart: Project Setup Guide](#quickstart-project-setup-guide)  
 👓 [How to Run This Project on Meta Quest 3](#how-to-run-this-project-on-meta-quest-3)  
@@ -116,7 +116,7 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 
 # Dashboard - Web & Jira
 **Deployment & Distribution:**
-- **Jira Web Dashboard and Jira Integration:**********
+- **Jira Web Dashboard and Jira Integration:**
 - For managers to view real-time machine health, alerts, and 
 - Automated ticket creation and status tracking for maintenance events.
 - Comprehensive analytics and compliance tools to maximize uptime and ensure on-site safety.
@@ -186,13 +186,6 @@ It integrates AI agents to efficiently respond to user queries, such as retrievi
 - Ensure seamless IoT sensor data integration with AI-driven anomaly detection and predictive insights. 
 - Provide comprehensive analytics and compliance tools to maximize uptime and safety.
 
-# Data Ingestion & Flow
-![Alt text](https://github.com/user-attachments/assets/7decd02c-287c-4da0-9d7c-aaf2cfeba928)
-![Alt text](https://github.com/user-attachments/assets/84053662-4f1a-4925-aec5-2fdd797618cb)
-- Continuous ingestion of sensor, visual, and manual data
-- Centralized knowledge base for up-to-date context
-- Real-time feedback loop for anomaly detection, prediction, and guidance
-
 # Under the Hood: Our Technology Stack with Modern MCP Tools Box
 - Our solution harnesses a modern technology stack built around the ** Model Context Protocol (MCP)** to enable seamless, context-aware industrial maintenance.
 - **Python 3.10+** (Poetry for dependency management)
@@ -201,6 +194,13 @@ It integrates AI agents to efficiently respond to user queries, such as retrievi
 - **XR/VR** (Meta Quest, HoloLens, or compatible devices)
 - **Web Dashboard**(React/Next.js or similar) 
 - **RAG/Vector Store**(for centralized knowledge)
+
+# Data Ingestion & Flow
+![Alt text](https://github.com/user-attachments/assets/7decd02c-287c-4da0-9d7c-aaf2cfeba928)
+![Alt text](https://github.com/user-attachments/assets/84053662-4f1a-4925-aec5-2fdd797618cb)
+- Continuous ingestion of sensor, visual, and manual data
+- Centralized knowledge base for up-to-date context
+- Real-time feedback loop for anomaly detection, prediction, and guidance
 
 # Project Structure
 ```text

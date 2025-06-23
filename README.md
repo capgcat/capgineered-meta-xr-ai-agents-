@@ -14,6 +14,7 @@ Welcome to the Industrial AI Safety Suite—a next-generation, agentic platform 
 🛠️ [Under the Hood: Our Technology Stack](#under-the-hood-our-technology-stack)  
 💻 [Project Structure](#project-structure)  
 🔐 [Quickstart: Project Setup Guide](#quickstart-project-setup-guide)  
+👓 [How to Run This Project on Meta Quest 3](#how-to-run-this-project-on-meta-quest-3)  
 🎬 [Live Demo Walkthrough](#live-demo-walkthrough)  
 🚀 [What’s Next: Our Vision](#whats-next-our-vision)  
 👨‍💻 [Contributors](#contributors)
@@ -287,6 +288,46 @@ adk web or adk run machine_sensors_ai_agents
     Authorization Bearer : Create it by running "gcloud auth print-access-token"
 3 poetry run deploy-remote --send --resource_id=your-resource-id --session_id=your-session-id --message="The cat was a funny cat. The cat liked to sleep, and the cat liked to eat. Every morning, the cat would jump on the bed, the cat would meow, and the cat would purr. Everyone in the house knew the cat, talked about the cat, and cared for the cat. It was always the cat, the cat, the cat — nothing but the cat all day long."
 4 poetry run deploy-remote --delete --resource_id=your-resource-id
+
+# How to Run This Project on Meta Quest 3
+
+1. Clone the Repo
+   Clone the project to your local machine:
+   git clone https://github.com/capgcat/capgineered-meta-xr-ai-agents-.git
+
+2. Open the Project in Unity
+   Open Unity Hub → Click Add → Select the /ui/mixed-reality/meta-machine-xr-ai-agent folder → Open with Unity 2022.3 LTS (or version used in this project).
+
+3. Switch to Android Platform
+   Go to File → Build Settings → Select Android → Click Switch Platform.
+
+4. Install Meta XR SDK
+   Open Window → Package Manager → Add Meta XR All-in-One SDK via Git URL:
+   https://github.com/MetaQuestDeveloper/Unity-MetaQuest-SDK.git
+
+5. Enable XR Plugin & Oculus Support
+   Go to Edit → Project Settings → XR Plug-in Management → Enable Oculus under Android tab.
+
+6. Set Android Build Settings
+   In Player Settings → Other Settings:
+   - Set Package Name (e.g., com.company.app)
+   - Set Minimum API Level to 29
+   - Set Target API Level to 33 or 34
+
+7. Configure Oculus Features (if used)
+   In Project Settings → Oculus → Quest Features, enable Hand Tracking, Passthrough, or other required capabilities.
+
+8. Connect Quest 3 in Developer Mode
+   - Enable Developer Mode using Meta Quest mobile app
+   - Connect Quest 3 via USB
+   - Accept USB Debugging prompt inside the headset
+
+9. Build and Deploy to Headset
+   Go to File → Build Settings → Build and Run → Choose the connected Quest 3 device.
+
+10. Launch and Test in Headset
+    Once installed, the app will auto-launch. Put on your headset and enjoy testing your experience!
+
 
 # Safety and Security
 - Role-based access control for dashboards and agent actions

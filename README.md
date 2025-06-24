@@ -44,7 +44,7 @@ Despite significant investments in safety manuals, operational guidelines, and a
 ## Overview:
 The solution is a GenAI-powered, agentic mixed reality maintenance system that integrates IoT sensor data, cloud-based AI, and Meta Quest 3 AR headsets. It delivers real-time anomaly detection, predictive maintenance, prioritized notifications, and immersive AR-guided repair procedures.
 ## Solution Architecture
-![image](https://github.com/user-attachments/assets/a7117881-a8da-49eb-bef1-407796303870)
+![image](https://github.com/user-attachments/assets/2016a09d-b0f7-43a0-9b25-edc608179c09)
 
 ## Key Features:
 
@@ -118,16 +118,17 @@ Similar to the general RAG Agent, but this one is specifically configured to ret
 # Dashboard - Web & Jira
 **Deployment & Distribution:**
 - **Jira Web Dashboard and Jira Integration:**
+## Jira Dashboard For Notifications
+https://github.com/user-attachments/assets/f48ef92a-0440-4549-91cc-5fae87d79d18
 - For managers to view real-time machine health, alerts, and 
 - Automated ticket creation and status tracking for maintenance events.
 - Comprehensive analytics and compliance tools to maximize uptime and ensure on-site safety.
-![Alt text](https://github.com/user-attachments/assets/402cdd33-da66-4b31-b780-b48ecc00ae4c)
 - **B5META Mixed Reality Maintenance Dashboard:** 
+## Demo Mixed Reality Maintenance Dashboard
+https://github.com/user-attachments/assets/c7268e36-54cf-46fc-8e34-2344f32a33f2
 - This web-based application offers a comprehensive overview of pending tasks for the Maintenance Technicians, Operations Managers,IT/OT Administrators and Industrial Safety Officers. It highlights high-priority items to ensure a seamless process while keeping teams organized and focused on urgent tasks, thereby ensuring timely completion and accountability.
 - The app provides insights into tasks by breaking it down using multiple views for dashboard.
 It integrates AI agents to efficiently respond to user queries, such as retrieving the top pending tasks in specific areas. 
-![Alt text](https://github.com/user-attachments/assets/423c5618-9f37-4ae7-81df-27bcd4a4ffed)
-
 
 # Mixed Reality Guidance on Meta Headset 
 ## Demo  

@@ -130,7 +130,8 @@ It integrates AI agents to efficiently respond to user queries, such as retrievi
 
 
 # Mixed Reality Guidance on Meta Headset 
-![image](https://github.com/capgcat/capgineered-meta-xr-ai-agents-/blob/1dc64973711202b56133bceadd3b653af9bab884/images/MixedReality.jpg)
+## Demo  
+https://github.com/user-attachments/assets/f6da437c-5d8d-4dd6-9153-aed50d21066b
 - All Mixed Reality panels and their functionalities are powered by integrated AI agents, driving intelligent data processing and real-time guidance.
 - A cutting-edge Mixed Reality application designed to provide real-time engineer guidance for machine maintenance and repair.
 - Leverages anomaly detection and predictive insights from our specialized anomaly and prediction AI agents to generate context-aware, actionable troubleshooting steps.

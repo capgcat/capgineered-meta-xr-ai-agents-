@@ -150,6 +150,7 @@ https://github.com/user-attachments/assets/f6da437c-5d8d-4dd6-9153-aed50d21066b
 
 # Relevant Metrics
 ## AI System Performance:
+We evaluated the AI system’s performance using metrics like the tool’s trajectory average score and response match score.
 ![image](https://github.com/user-attachments/assets/d0d38901-b5ee-4c0e-8bfb-febb25f9ec52)
 ### Anomaly Detection(Planned Evaluation):
 - **Accuracy, Precision, Recall, F1 Score:** Will be used to assess the system’s ability to correctly identify true anomalies versus false positives/negatives once data is available.

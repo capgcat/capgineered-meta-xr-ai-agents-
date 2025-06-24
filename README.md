@@ -345,7 +345,7 @@ See It In Action:
 
 Watch as our system detects an anomaly, suggests a self-healing action, and provides real-time XR guidance to a technician, while SOC analysts receive proactive notifications and incident coordination.
 
-[![Capgineered Agents](https://img.youtube.com/vi/PY45JG2GLb8/0.jpg)](https://www.youtube.com/watch?v=PY45JG2GLb8 "Capgineered Agents")
+[![Capgineered Agents](https://img.youtube.com/vi/sXI4y_nONp8/0.jpg)](https://www.youtube.com/watch?v=sXI4y_nONp8 "Capgineered Agents")
 
 
 # What’s Next: Our Vision

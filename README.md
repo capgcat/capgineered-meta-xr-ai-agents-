@@ -236,16 +236,6 @@ We evaluated the AI system’s performance using metrics like the tool’s traje
 │       │   ├── agent.py
 │       │   ├── prompt.py
 │       │   └── tools.py
-│       ├── basic_demo_agent
-│       │   ├── __init__.py
-│       │   ├── __pycache__
-│       │   │   ├── __init__.cpython-313.pyc
-│       │   │   ├── agent.cpython-313.pyc
-│       │   │   ├── prompt.cpython-313.pyc
-│       │   │   └── tools.cpython-313.pyc
-│       │   ├── agent.py
-│       │   ├── prompt.py
-│       │   └── tools.py
 │       ├── data_ingestion
 │       │   ├── __init__.py
 │       │   ├── agent.py

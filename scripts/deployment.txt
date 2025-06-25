@@ -3,13 +3,13 @@ export GOOGLE_GENAI_USE_VERTEXAI=1
 export GOOGLE_CLOUD_PROJECT=hacker
 export GOOGLE_CLOUD_LOCATION=us-central1
 export GOOGLE_API_KEY=AIzaSyC
-export GOOGLE_CLOUD_STORAGE_BUCKET=staging.hacker2025-team-63-dev.appspot.com
+export GOOGLE_CLOUD_STORAGE_BUCKET=staging.hacker2025
 export PROJECT_ID=hacker2025-team-63-dev
 export MCP_TOOLBOX_URL=http://127.0.0.1:5000
 export MCP_TOOLBOX_PG=http://127.0.0.1:6000
-export RAG_CORPUS=RAG_CORPUS=projects/hacker2025-team-63-dev/locations/us-central1/ragCorpora/6917529027641081856
+export RAG_CORPUS=RAG_CORPUS=projects/hacker2025-team-63-dev/locations/us-central1/ragCorpora/
 export DB_USER=postgres
-export DB_PASS=WavelengthWonders
+export DB_PASS=
 
 #via docker
 #create artifacs repository
